@@ -1,6 +1,6 @@
-// /* Components start */
+/* Components start */
 
-// /* Buttons start */
+/* Buttons start */
 // /* Sliding-button start */
 // .btn-sliding {
 //   display: flex;
@@ -92,24 +92,24 @@
 // }
 // /* Sliding-button end */
 
-// /* Arrow-button start */
-// .arrow-btn {
-//   padding-block: 0.5em;
-//   position: relative;
+/* Arrow-button start */
+.arrow-btn {
+  padding-block: 0.5em;
+  position: relative;
 
-//   & svg {
-//     position: absolute;
-//     top: 40%;
+  & svg {
+    position: absolute;
+    top: 30%;
 
-//     margin-left: 0.5em;
-//     transition: transform 0.25s ease-in-out;
-//   }
+    margin-left: 0.5em;
+    transition: transform 0.25s ease-in-out;
+  }
 
-//   &:hover svg {
-//     transform: translateX(1em);
-//   }
-// }
-// /* Arrow-button end */
+  &:hover svg {
+    transform: translateX(1em);
+  }
+}
+/* Arrow-button end */
 
 // /* Buttons end */
 
@@ -336,179 +336,303 @@
 // }
 // /* Hero-card end */
 
-// /* Welcome-card start */
-// .welcome-card {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: flex-end;
-//   align-items: flex-start;
+/* Sightseeing-card start */
+.sightseeing-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-//   max-width: 47rem;
-//   aspect-ratio: 3 / 2;
-//   padding: 2.5rem;
+  max-width: 40rem;
+  aspect-ratio: 3 / 2;
+  padding: 2rem;
 
-//   background-image: url('../assets/images/dhmotes_1.jpg');
-//   background-size: cover;
-//   background-position: center;
-//   background-repeat: no-repeat;
+  background-image: url('../assets/images/agios_achillios.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-//   position: relative;
+  position: relative;
 
-//   &__content-box {
-//     margin-bottom: 2rem;
-//     overflow: hidden;
+  &__content-box {
+    overflow: hidden;
 
-//     z-index: 20;
-//   }
+    z-index: 20;
+  }
 
-//   &__title {
-//     margin-bottom: 2rem;
-//   }
+  &__title {
+    margin-bottom: 3rem;
+  }
 
-//   &__text {
-//     margin-bottom: 1rem;
-//   }
+  &__arrow {
+    opacity: 1;
+    visibility: visible;
 
-//   &__link {
-//     z-index: 20;
-//   }
+    z-index: 20;
+    transition: opacity 0.5s ease-in-out;
+  }
 
-//   &__overlay {
-//     position: absolute;
-//     inset: 0;
+  &__link {
+    opacity: 0;
+    visibility: hidden;
 
-//     opacity: 0.8;
-//     z-index: 10;
-//   }
+    z-index: 20;
+    transition: opacity 0.5s ease-in-out;
+  }
 
-//   &--primary {
-//     & .welcome-card__title,
-//     & .welcome-card__text,
-//     & .welcome-card__link {
-//       color: var(--color-white);
-//     }
+  &__overlay {
+    position: absolute;
+    inset: 0;
 
-//     & .welcome-card__overlay {
-//       background-color: var(--color-primary);
-//     }
-//   }
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.5s ease-in-out;
+  }
 
-//   &--secondary {
-//     & .welcome-card__title,
-//     & .welcome-card__text,
-//     & .welcome-card__link {
-//       color: var(--color-primary);
-//     }
+  &--primary {
+    @extend .sightseeing-card;
+    & .sightseeing-card__title,
+    & .sightseeing-card__text,
+    & .sightseeing-card__link {
+      color: var(--color-white);
+      text-align: center;
+    }
 
-//     & .welcome-card__overlay {
-//       background-color: var(--color-secondary-light);
-//     }
-//   }
-// }
+    & .sightseeing-card__overlay {
+      background-color: var(--color-primary);
+    }
+  }
 
-// @media screen and (hover: hover) {
-//   .welcome-card {
-//     &__title {
-//       margin-bottom: 4rem;
-//       animation: titleSlideOut 1s ease forwards;
-//     }
+  //   &--secondary {
+  //     @extend .sightseeing-card;
+  //     & .sightseeing-card__title,
+  //     & .sightseeing-card__text,
+  //     & .sightseeing-card__link {
+  //       color: var(--color-primary);
+  //     }
 
-//     &__text {
-//       margin-bottom: 1rem;
-//       animation: textSlideOut 1s ease forwards;
-//     }
+  //     & .sightseeing-card__overlay {
+  //       background-color: var(--color-secondary-light);
+  //     }
+  //   }
+}
 
-//     &:hover {
-//       & .welcome-card__title {
-//         animation: titleSlideIn 0.75s ease forwards;
-//       }
+@media screen and (hover: hover) {
+  .sightseeing-card {
+    background-size: 100%;
+    transition: background-size 0.5s ease-in-out;
 
-//       & .welcome-card__text {
-//         animation: textSlideIn 0.75s ease forwards;
-//       }
-//     }
-//   }
-// }
-// /* Welcome-card end */
+    &__title {
+      animation: titleSlideOut 0.5s ease forwards;
+    }
 
-// /* News-card start */
-// .news-card {
-//   position: relative;
+    &__text {
+      animation: textSlideOut 0.5s ease forwards;
+    }
 
-//   &__img-container {
-//     width: 100%;
-//     margin-bottom: 2rem;
-//     position: relative;
+    &:hover {
+      background-size: 110%;
 
-//     overflow: hidden;
+      & .sightseeing-card__title {
+        animation: titleSlideIn 0.75s ease forwards;
+      }
 
-//     & img {
-//       width: 100%;
-//       height: 100%;
-//       object-fit: cover;
-//       object-position: center;
+      & .sightseeing-card__text {
+        margin-bottom: 1rem;
+        animation: textSlideIn 0.75s ease forwards;
+      }
 
-//       transition: transform 1s ease-in-out;
-//     }
-//   }
+      & .sightseeing-card__arrow {
+        opacity: 0;
+        visibility: hidden;
+      }
 
-//   &__date {
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
+      & .sightseeing-card__link {
+        opacity: 1;
+        visibility: visible;
+      }
 
-//     padding: 0.5rem;
-//     background-color: var(--color-white);
+      & .sightseeing-card__overlay {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+/* Sightseeing-card end */
 
-//     z-index: 20;
-//   }
+/* Experience-card start */
+.experience-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 
-//   &__title {
-//     margin-bottom: 2rem;
-//   }
+  max-width: 50rem;
+  aspect-ratio: 3 / 2;
+  padding: 2rem;
 
-//   &__text {
-//     margin-bottom: 2rem;
-//   }
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-//   &__link-container {
-//     width: fit-content;
-//     padding-block: 1em;
-//     transition: padding 0.5s ease-in-out, background-color 0.25s ease-in-out;
+  position: relative;
 
-//     &:hover {
-//       padding: 1em 4em 1em 1em;
-//       background-color: var(--color-secondary-light);
-//     }
-//   }
+  &__content-box {
+    overflow: hidden;
+    z-index: 20;
+  }
 
-//   &__link {
-//     opacity: 1;
-//     visibility: visible;
-//   }
-// }
+  &__title {
+    margin-bottom: 3rem;
+  }
 
-// /* Media queries for news-card */
-// @media screen and (hover: hover) {
-//   .news-card {
-//     &__link {
-//       opacity: 0;
-//       visibility: hidden;
-//       transition: opacity 0.25s ease-in-out;
-//     }
-//     &:hover {
-//       & .news-card__img-container img {
-//         transform: scale(1.15);
-//       }
+  &__link {
+    padding: 0.5rem;
+    z-index: 20;
+  }
 
-//       & .news-card__link {
-//         opacity: 1;
-//         visibility: visible;
-//       }
-//     }
-//   }
-// }
-// /* News-card end */
+  &__overlay {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  &--small {
+    @extend .experience-card;
+    background-image: url('../assets/images/limni_prespwn_1.jpg');
+
+    & .experience-card__title,
+    & .experience-card__text,
+    & .experience-card__link {
+      color: var(--color-white);
+      text-align: center;
+    }
+
+    & .experience-card__overlay {
+      background-color: var(--color-primary);
+    }
+  }
+
+  &--large {
+    @extend .experience-card;
+    background-image: url('../assets/images/limni_prespwn_2.jpg');
+
+    & .experience-card__title,
+    & .experience-card__text,
+    & .experience-card__link {
+      color: var(--color-white);
+      text-align: center;
+    }
+
+    & .experience-card__overlay {
+      background-color: var(--color-primary);
+    }
+  }
+}
+
+@media screen and (hover: hover) {
+  .experience-card {
+    &__title {
+      animation: titleSlideOut 0.5s ease forwards;
+    }
+
+    &__text {
+      animation: textSlideOut 0.5s ease forwards;
+    }
+
+    &:hover {
+      & .experience-card__title {
+        margin-bottom: 4rem;
+        animation: titleSlideIn 0.75s ease forwards;
+      }
+
+      & .experience-card__text {
+        margin-bottom: 1rem;
+        animation: textSlideIn 0.75s ease forwards;
+      }
+
+      & .experience-card__link {
+      }
+
+      & .experience-card__overlay {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+/* Experience-card end */
+
+/* News-card start */
+.news-card {
+  position: relative;
+
+  &__img-container {
+    width: 100%;
+    margin-bottom: 2rem;
+    position: relative;
+
+    overflow: hidden;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+
+      transition: transform 1s ease-in-out;
+    }
+  }
+
+  &__date {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    padding: 0.5rem;
+    background-color: var(--color-white);
+
+    z-index: 20;
+  }
+
+  &__title {
+    margin-bottom: 2rem;
+  }
+
+  &__text {
+    margin-bottom: 2rem;
+  }
+
+  &__link {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Media queries for news-card */
+@media screen and (hover: hover) {
+  .news-card {
+    &__link {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease-in-out;
+    }
+    &:hover {
+      & .news-card__img-container img {
+        transform: scale(1.1);
+      }
+
+      & .news-card__link {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+/* News-card end */
 
 // /* Civil-protection card start */
 // .cp-card {
@@ -696,29 +820,33 @@
 // }
 // /* Calendar end */
 
-// /* Swiper slider buttons start */
-// .slider-btn-next,
-// .slider-btn-prev {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
+/* Swiper slider buttons start */
+.slider-btn-next,
+.slider-btn-prev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-//   width: clamp(2.75rem, 2.3333rem + 1.6667vw, 4rem);
-//   aspect-ratio: 1;
-//   border-radius: 50%;
-//   background-color: var(--color-secondary-light);
+  width: fit-content;
+  padding: 0.75rem;
+  background-color: transparent;
 
-//   cursor: pointer;
+  cursor: pointer;
+  transition: background-color 0.25s ease-in-out;
 
-//   &.swiper-button-disabled {
-//     display: none;
-//   }
-// }
+  &.swiper-button-disabled {
+    display: none;
+  }
 
-// .slider-btn-prev svg {
-//   transform: rotate(180deg);
-// }
-// /* Swiper slider buttons end */
+  &:hover {
+    background-color: var(--color-secondary);
+  }
+}
+
+.slider-btn-prev svg {
+  transform: rotate(180deg);
+}
+/* Swiper slider buttons end */
 
 // /* Footer separator start */
 // .footer-separator {
@@ -742,24 +870,24 @@
 
 // /* Footer separator end */
 
-// /* Back-to-top button start */
-// .back-to-top {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
+/* Back-to-top button start */
+.back-to-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-//   position: fixed;
-//   bottom: 0;
-//   right: 0;
-//   width: var(--header-height);
-//   aspect-ratio: 1;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: var(--header-height);
+  aspect-ratio: 1;
 
-//   background-color: var(--color-secondary);
+  background-color: var(--color-secondary);
 
-//   cursor: pointer;
-//   z-index: 110;
-// }
-// /* Back-to-top button end */
+  cursor: pointer;
+  z-index: 110;
+}
+/* Back-to-top button end */
 
 // /* Accessibility widget start */
 // #accessibilityBar {

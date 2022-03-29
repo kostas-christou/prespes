@@ -310,53 +310,53 @@ function showVideo(e) {
 }
 
 // Calendar initialization
-if (document.getElementById('color-calendar')) {
-  new Calendar({
-    id: '#color-calendar',
-    calendarSize: 'small',
-  });
-}
+// if (document.getElementById('color-calendar')) {
+//   new Calendar({
+//     id: '#color-calendar',
+//     calendarSize: 'small',
+//   });
+// }
 
 //// Playing with calendar
-const calendarBody = document.querySelector('.calendar__body');
-calendarBody.addEventListener('click', (e) => {
-  const calendarDay = document.querySelector('.calendar__day-selected');
-  const calendarHeader =
-    calendarDay.parentElement.parentElement.previousElementSibling;
-  const calendarMonth = calendarHeader.querySelector('.calendar__month');
-  const calendarYear = calendarHeader.querySelector('.calendar__year');
-  let day = calendarDay.firstElementChild.textContent;
-  let month = calendarMonth.textContent;
-  let year = calendarYear.textContent;
-  console.log(`See all events on ${day}/${month}/${year}`);
-});
+// const calendarBody = document.querySelector('.calendar__body');
+// calendarBody.addEventListener('click', (e) => {
+//   const calendarDay = document.querySelector('.calendar__day-selected');
+//   const calendarHeader =
+//     calendarDay.parentElement.parentElement.previousElementSibling;
+//   const calendarMonth = calendarHeader.querySelector('.calendar__month');
+//   const calendarYear = calendarHeader.querySelector('.calendar__year');
+//   let day = calendarDay.firstElementChild.textContent;
+//   let month = calendarMonth.textContent;
+//   let year = calendarYear.textContent;
+//   console.log(`See all events on ${day}/${month}/${year}`);
+// });
 
 // Swiper (slider) config
-const meetingsSwiper = new Swiper('.meetings__swiper', {
+const newsSwiper = new Swiper('.news__swiper', {
   slidesPerView: 1,
   spaceBetween: 20,
   grabCursor: true,
   breakpoints: {
     1040: {
-      slidesPerView: 1.4,
+      slidesPerView: 1.5,
       spaceBetween: 30,
     },
     1350: {
-      slidesPerView: 1.4,
+      slidesPerView: 2.5,
       spaceBetween: 40,
     },
     2200: {
-      slidesPerView: 2.4,
+      slidesPerView: 3.5,
       spaceBetween: 60,
     },
   },
   navigation: {
-    nextEl: '.meetings__swiper-button-next',
-    prevEl: '.meetings__swiper-button-prev',
+    nextEl: '.news__swiper-button-next',
+    prevEl: '.news__swiper-button-prev',
   },
 });
 
-const quickAccessSwiper = new Swiper('.quick-access__swiper', {
+const eventsSwiper = new Swiper('.events__swiper', {
   slidesPerView: 1,
   spaceBetween: 20,
   grabCursor: true,
@@ -375,8 +375,8 @@ const quickAccessSwiper = new Swiper('.quick-access__swiper', {
     },
   },
   navigation: {
-    nextEl: '.quick-access__swiper-button-next',
-    prevEl: '.quick-access__swiper-button-prev',
+    nextEl: '.events__swiper-button-next',
+    prevEl: '.events__swiper-button-prev',
   },
 });
 
