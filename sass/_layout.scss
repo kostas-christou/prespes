@@ -1,75 +1,75 @@
-// /* Home page general layout start */
-// .header {
-//   position: fixed;
-//   inset: 0;
-//   height: var(--header-height);
+/* Home page general layout start */
+.header {
+  position: fixed;
+  inset: 0;
+  height: var(--header-height);
 
-//   z-index: 100;
-// }
+  z-index: 100;
+}
 
-// .aside {
-//   position: fixed;
-//   top: var(--header-height);
-//   bottom: 0;
+.aside {
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0;
 
-//   width: var(--header-height);
-//   background-color: var(--color-white);
+  width: var(--header-height);
+  background-color: var(--color-white);
 
-//   transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 
-//   &--left {
-//     @extend .aside;
-//     display: none;
-//   }
+  //   &--left {
+  //     @extend .aside;
+  //     display: none;
+  //   }
 
-//   &--right {
-//     @extend .aside;
-//     right: 0;
-//     z-index: 101;
-//     transform: translateX(100%);
-//   }
-// }
+  &--right {
+    @extend .aside;
+    right: 0;
+    z-index: 101;
+    transform: translateX(100%);
+  }
+}
 
-// .main {
-//   position: relative;
-//   z-index: 1;
+.main {
+  position: relative;
+  z-index: 1;
 
-//   background-color: var(--color-white);
-// }
+  background-color: var(--color-white);
+}
 
-// .parallax-wrapper {
-//   height: 100%;
-//   width: 100%;
+.parallax-wrapper {
+  height: 100%;
+  width: 100%;
 
-//   overflow-x: hidden;
-//   overflow-y: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-//   position: relative;
-// }
+  position: relative;
+}
 
-// /* Media queries for layouts */
-// @media screen and (min-width: 55em) {
-//   .parallax-wrapper {
-//     height: 100%;
-//     width: calc(100% - (var(--header-height) * 2));
+/* Media queries for layouts */
+@media screen and (min-width: 55em) {
+  .parallax-wrapper {
+    height: 100%;
+    width: calc(100% - var(--header-height));
 
-//     overflow-x: hidden;
-//     overflow-y: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 
-//     margin: 0 auto;
-//   }
+    margin-right: auto;
+  }
 
-//   .aside {
-//     &--left {
-//       display: block;
-//       left: 0;
-//       z-index: 80;
-//     }
+  .aside {
+    // &--left {
+    //   display: block;
+    //   left: 0;
+    //   z-index: 80;
+    // }
 
-//     &--right {
-//       transform: translateX(0);
-//     }
-//   }
-// }
+    &--right {
+      transform: translateX(0);
+    }
+  }
+}
 
-// /* Home page general layout end */
+/* Home page general layout end */
