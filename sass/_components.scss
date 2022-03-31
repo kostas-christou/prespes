@@ -549,6 +549,8 @@
   align-items: center;
   gap: 1rem;
 
+  // width: fit-content;
+
   &__icon-box {
     display: flex;
     justify-content: center;
@@ -578,7 +580,7 @@
 
 /* Follow-us-card start */
 .follow-card {
-  width: 30rem;
+  width: 100%;
   aspect-ratio: 1;
 
   background-size: cover;
