@@ -13,7 +13,8 @@
   bottom: 0;
 
   width: var(--header-height);
-  background-color: var(--color-white);
+  background-color: transparent;
+  // background-color: var(--color-white);
 
   transition: transform 0.5s ease-in-out;
 
@@ -50,13 +51,13 @@
 /* Media queries for layouts */
 @media screen and (min-width: 55em) {
   .parallax-wrapper {
-    height: 100%;
-    width: calc(100% - var(--header-height));
+    // height: 100%;
+    // width: calc(100% - var(--header-height));
 
-    overflow-x: hidden;
-    overflow-y: auto;
+    // overflow-x: hidden;
+    // overflow-y: auto;
 
-    margin-right: auto;
+    // margin-right: auto;
   }
 
   .aside {

@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@500&family=Roboto+Slab:wght@700&family=Roboto:wght@400;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Fira+Sans:wght@700;900&family=Inter:wght@500&family=Roboto+Slab:wght@700&family=Roboto:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
     <title>Πρέσπες</title>
@@ -341,7 +341,7 @@
         </svg>
       </button>
       <h3 class="full-menu__list-title">ΕΜΠΕΙΡΙΕΣ</h3>
-      <div class="full-menu__experience">
+      <div class="full-menu__experiences">
         <ul class="full-menu__list">
           <li class="full-menu__list-item">
             <a href="#" class="full-menu__link">Φύση</a>
@@ -616,27 +616,24 @@
       <main class="main">
         <!-- Hero section start -->
         <section class="hero">
-          <div class="hero__background-container">
-            <p class="hero__subtitle--1">3 χώρες 2 λίμνες</p>
-            <h1 class="hero__title">ΕΝΑΣ ΜΟΝΑΔΙΚΟΣ ΠΡΟΟΡΙΣΜΟΣ</h1>
-            <p class="hero__subtitle--2">καλώς ήλθατε στις Πρέσπες</p>
-          </div>
-          <div class="hero__fader-container"></div>
+          <p class="hero__subtitle--1">3 χώρες 2 λίμνες</p>
+          <h1 class="hero__title">ΕΝΑΣ ΜΟΝΑΔΙΚΟΣ ΠΡΟΟΡΙΣΜΟΣ</h1>
+          <p class="hero__subtitle--2">καλώς ήλθατε στις Πρέσπες</p>
+          <div class="hero__fader"></div>
         </section>
         <!-- Hero section end -->
 
         <!-- Sightseeing section start -->
         <section class="sightseeing home-container-center">
-          <div class="intro">
-            <h2 class="intro__title">Κορυφαία αξιοθέατα</h2>
-          </div>
+          <h2 class="sightseeing__title">Κορυφαία αξιοθέατα</h2>
+
           <div class="sightseeing__content-wrapper">
             <!-- Sightseeing-card start -->
-            <div class="sightseeing-card--primary">
+            <div class="sightseeing-card--primary sightseeing__item--1">
               <div class="sightseeing-card__content-box">
-                <h2 class="sightseeing-card__title">
+                <h3 class="sightseeing-card__title">
                   Βασιλική του Αγίου Αχιλλείου
-                </h2>
+                </h3>
                 <p class="sightseeing-card__text">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim
                   omnis adipisci sunt perferendis accusantium consequuntur nemo
@@ -676,17 +673,14 @@
             </div>
             <!-- Sightseeing-card end -->
             <!-- Sightseeing-card start -->
-            <div class="sightseeing-card--primary">
+            <div class="sightseeing-card--primary sightseeing__item--2">
               <div class="sightseeing-card__content-box">
-                <h2 class="sightseeing-card__title">
-                  Βασιλική του Αγίου Αχιλλείου
-                </h2>
+                <h2 class="sightseeing-card__title">Αγιος Γερμανός</h2>
                 <p class="sightseeing-card__text">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim
                   omnis adipisci sunt perferendis accusantium consequuntur nemo
                   aut sequi maiores dolorem quisquam, quaerat a consequatur
-                  asperiores nobis? Delectus, est dolor quod laboriosam nihil
-                  illum? Voluptas dolor alias necessitatibus.
+                  asperiores nobis.
                 </p>
               </div>
               <svg
@@ -720,17 +714,14 @@
             </div>
             <!-- Sightseeing-card end -->
             <!-- Sightseeing-card start -->
-            <div class="sightseeing-card--primary">
+            <div class="sightseeing-card--primary sightseeing__item--3">
               <div class="sightseeing-card__content-box">
-                <h2 class="sightseeing-card__title">
-                  Βασιλική του Αγίου Αχιλλείου
-                </h2>
+                <h2 class="sightseeing-card__title">Αγιος Γερμανός</h2>
                 <p class="sightseeing-card__text">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim
                   omnis adipisci sunt perferendis accusantium consequuntur nemo
                   aut sequi maiores dolorem quisquam, quaerat a consequatur
-                  asperiores nobis? Delectus, est dolor quod laboriosam nihil
-                  illum? Voluptas dolor alias necessitatibus.
+                  asperiores nobis
                 </p>
               </div>
               <svg
@@ -765,7 +756,7 @@
             <!-- Sightseeing-card end -->
           </div>
           <!-- Section button start -->
-          <a href="#" class="section-btn"
+          <a href="#" class="sightseeing__link section-btn"
             >Δείτε τα όλα<svg
               width="29"
               height="16"
@@ -785,22 +776,20 @@
 
         <!-- Experiences section start -->
         <section class="experiences home-container-center">
-          <div class="intro">
-            <h2 class="intro__title">ΜΟΝΑΔΙΚΕΣ ΕΜΠΕΙΡΙΕΣ</h2>
-          </div>
+          <h2 class="experiences__title">ΜΟΝΑΔΙΚΕΣ ΕΜΠΕΙΡΙΕΣ</h2>
 
           <div class="experiences__content-wrapper">
             <!-- Experiences-card start -->
-            <div class="experience-card--small">
-              <div class="experience-card__content-box">
-                <h3 class="experience-card__title">Μικρή & Μεγάλη Πρέσπα</h3>
-                <p class="experience-card__text">
+            <div class="experiences__item--1 experiences-card--small">
+              <div class="experiences-card__content-box">
+                <h3 class="experiences-card__title">Μικρή & Μεγάλη Πρέσπα</h3>
+                <p class="experiences-card__text">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
                   sed velit. Esse ullam itaque nam praesentium reprehenderit
                   totam nesciunt culpa.
                 </p>
               </div>
-              <a href="#" class="experience-card__link">
+              <a href="#" class="experiences-card__link">
                 <svg
                   width="29"
                   height="16"
@@ -814,20 +803,20 @@
                   />
                 </svg>
               </a>
-              <div class="experience-card__overlay"></div>
+              <div class="experiences-card__overlay"></div>
             </div>
             <!-- Experiences-card end -->
             <!-- Experiences-card start -->
-            <div class="experience-card--small">
-              <div class="experience-card__content-box">
-                <h3 class="experience-card__title">Μικρή & Μεγάλη Πρέσπα</h3>
-                <p class="experience-card__text">
+            <div class="experiences__item--2 experiences-card--small">
+              <div class="experiences-card__content-box">
+                <h3 class="experiences-card__title">Μικρή & Μεγάλη Πρέσπα</h3>
+                <p class="experiences-card__text">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
                   sed velit. Esse ullam itaque nam praesentium reprehenderit
                   totam nesciunt culpa.
                 </p>
               </div>
-              <a href="#" class="experience-card__link">
+              <a href="#" class="experiences-card__link">
                 <svg
                   width="29"
                   height="16"
@@ -841,20 +830,20 @@
                   />
                 </svg>
               </a>
-              <div class="experience-card__overlay"></div>
+              <div class="experiences-card__overlay"></div>
             </div>
             <!-- Experiences-card end -->
             <!-- Experiences-card start -->
-            <div class="experience-card--small">
-              <div class="experience-card__content-box">
-                <h3 class="experience-card__title">Μικρή & Μεγάλη Πρέσπα</h3>
-                <p class="experience-card__text">
+            <div class="experiences__item--3 experiences-card--small">
+              <div class="experiences-card__content-box">
+                <h3 class="experiences-card__title">Μικρή & Μεγάλη Πρέσπα</h3>
+                <p class="experiences-card__text">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
                   sed velit. Esse ullam itaque nam praesentium reprehenderit
                   totam nesciunt culpa.
                 </p>
               </div>
-              <a href="#" class="experience-card__link">
+              <a href="#" class="experiences-card__link">
                 <svg
                   width="29"
                   height="16"
@@ -868,20 +857,20 @@
                   />
                 </svg>
               </a>
-              <div class="experience-card__overlay"></div>
+              <div class="experiences-card__overlay"></div>
             </div>
             <!-- Experiences-card end -->
             <!-- Experiences-card start -->
-            <div class="experience-card--large">
-              <div class="experience-card__content-box">
-                <h3 class="experience-card__title">Μικρή & Μεγάλη Πρέσπα</h3>
-                <p class="experience-card__text">
+            <div class="experiences__item--4 experiences-card--large">
+              <div class="experiences-card__content-box">
+                <h3 class="experiences-card__title">Μικρή & Μεγάλη Πρέσπα</h3>
+                <p class="experiences-card__text">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
                   sed velit. Esse ullam itaque nam praesentium reprehenderit
                   totam nesciunt culpa.
                 </p>
               </div>
-              <a href="#" class="experience-card__link">
+              <a href="#" class="experiences-card__link">
                 <svg
                   width="29"
                   height="16"
@@ -895,12 +884,12 @@
                   />
                 </svg>
               </a>
-              <div class="experience-card__overlay"></div>
+              <div class="experiences-card__overlay"></div>
             </div>
             <!-- Experiences-card end -->
           </div>
           <!-- Section button start -->
-          <a href="#" class="section-btn"
+          <a href="#" class="experiences__link section-btn"
             >Δείτε τα όλα<svg
               width="29"
               height="16"
@@ -919,15 +908,39 @@
         <!-- Experiences section end -->
 
         <!-- News section start -->
-        <section class="news">
-          <!-- News intro wrapper only used to apply the home-container-center -->
-          <div class="news__intro-wrapper home-container-center">
-            <div class="intro">
-              <h2 class="intro__title">Τα νέα του δήμου μας</h2>
+        <section class="news home-container-right">
+          <h2 class="news__title">Τα νέα του δήμου μας</h2>
+          <div class="news__btn-box slider-btn-box">
+            <div class="slider-btn-prev news__swiper-button-prev">
+              <svg
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.833293 13.9584L18.5812 13.9584L10.4291 22.1105L12.5 24.1667L24.1666 12.5001L12.5 0.833419L10.4437 2.88967L18.5812 11.0418L0.833293 11.0417L0.833293 13.9584Z"
+                  fill="#07116B"
+                />
+              </svg>
+            </div>
+            <div class="slider-btn-next news__swiper-button-next">
+              <svg
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.833293 13.9584L18.5812 13.9584L10.4291 22.1105L12.5 24.1667L24.1666 12.5001L12.5 0.833419L10.4437 2.88967L18.5812 11.0418L0.833293 11.0417L0.833293 13.9584Z"
+                  fill="#07116B"
+                />
+              </svg>
             </div>
           </div>
-
-          <div class="news__slider home-container-right">
+          <div class="news__slider">
             <div class="swiper news__swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -1122,38 +1135,9 @@
                 </div>
               </div>
             </div>
-
-            <div class="slider-btn-next news__swiper-button-next">
-              <svg
-                width="25"
-                height="25"
-                viewBox="0 0 25 25"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0.833293 13.9584L18.5812 13.9584L10.4291 22.1105L12.5 24.1667L24.1666 12.5001L12.5 0.833419L10.4437 2.88967L18.5812 11.0418L0.833293 11.0417L0.833293 13.9584Z"
-                  fill="#07116B"
-                />
-              </svg>
-            </div>
-            <div class="slider-btn-prev news__swiper-button-prev">
-              <svg
-                width="25"
-                height="25"
-                viewBox="0 0 25 25"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0.833293 13.9584L18.5812 13.9584L10.4291 22.1105L12.5 24.1667L24.1666 12.5001L12.5 0.833419L10.4437 2.88967L18.5812 11.0418L0.833293 11.0417L0.833293 13.9584Z"
-                  fill="#07116B"
-                />
-              </svg>
-            </div>
           </div>
           <!-- Section button start -->
-          <a href="#" class="section-btn"
+          <a href="#" class="news__link section-btn"
             >Δείτε τα όλα<svg
               width="29"
               height="16"
@@ -1171,7 +1155,7 @@
         </section>
         <!-- News section end -->
 
-        <!-- Video section start -->
+        <!-- Video-presenation section start -->
         <section class="video-presentation home-container-center">
           <div class="video">
             <div class="video__overlay">
@@ -1193,15 +1177,43 @@
             ></iframe>
           </div>
         </section>
-        <!-- Video section end -->
+        <!-- Video-presenation section end -->
 
         <!-- Events section start -->
-        <section class="events">
-          <div class="intro">
-            <h2 class="intro__title">Εκδηλώσεις</h2>
+        <section class="events home-container-right">
+          <h2 class="events__title">Εκδηλώσεις</h2>
+          <div class="events__btn-box slider-btn-box">
+            <div class="slider-btn-prev events__swiper-button-prev">
+              <svg
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.833293 13.9584L18.5812 13.9584L10.4291 22.1105L12.5 24.1667L24.1666 12.5001L12.5 0.833419L10.4437 2.88967L18.5812 11.0418L0.833293 11.0417L0.833293 13.9584Z"
+                  fill="#07116B"
+                />
+              </svg>
+            </div>
+            <div class="slider-btn-next events__swiper-button-next">
+              <svg
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.833293 13.9584L18.5812 13.9584L10.4291 22.1105L12.5 24.1667L24.1666 12.5001L12.5 0.833419L10.4437 2.88967L18.5812 11.0418L0.833293 11.0417L0.833293 13.9584Z"
+                  fill="#07116B"
+                />
+              </svg>
+            </div>
           </div>
 
-          <div class="events__slider home-container-right">
+          <div class="events__slider">
             <!-- Swiper -->
             <div class="swiper events__swiper">
               <div class="swiper-wrapper">
@@ -1476,38 +1488,10 @@
                   </div>
                 </div>
               </div>
-              <div class="slider-btn-next events__swiper-button-next">
-                <svg
-                  width="25"
-                  height="25"
-                  viewBox="0 0 25 25"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0.833293 13.9584L18.5812 13.9584L10.4291 22.1105L12.5 24.1667L24.1666 12.5001L12.5 0.833419L10.4437 2.88967L18.5812 11.0418L0.833293 11.0417L0.833293 13.9584Z"
-                    fill="#07116B"
-                  />
-                </svg>
-              </div>
-              <div class="slider-btn-prev events__swiper-button-prev">
-                <svg
-                  width="25"
-                  height="25"
-                  viewBox="0 0 25 25"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0.833293 13.9584L18.5812 13.9584L10.4291 22.1105L12.5 24.1667L24.1666 12.5001L12.5 0.833419L10.4437 2.88967L18.5812 11.0418L0.833293 11.0417L0.833293 13.9584Z"
-                    fill="#07116B"
-                  />
-                </svg>
-              </div>
             </div>
           </div>
           <!-- Section button start -->
-          <a href="#" class="section-btn"
+          <a href="#" class="events__link section-btn"
             >Δείτε τα όλα<svg
               width="29"
               height="16"
@@ -1918,7 +1902,7 @@
 
       <!-- Footer start -->
       <footer class="footer">
-        <div class="footer__content home-container-center">
+        <div class="footer__content">
           <div class="footer__logo-container">
             <p class="footer__logo-title">VisitPrespes</p>
             <img

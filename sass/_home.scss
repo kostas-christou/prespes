@@ -7,6 +7,7 @@
   padding-block: 1rem;
 
   background-color: var(--color-white);
+  // background-color: transparent;
   box-shadow: 0 1px 10px 0 var(--color-grey-light);
 
   &__logo-container {
@@ -714,61 +715,205 @@
 }
 /* Aside nav right styling end */
 
-// /* Hero section styling start */
-// .hero {
-//   width: 100%;
-//   min-height: 100vh;
-//   position: relative;
+/* Hero section styling start */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-//   &__background-container {
-//     width: 100%;
-//     min-height: 85vh;
-//     padding-top: var(--header-height);
+  width: 100%;
+  min-height: 100vh;
+  padding-top: var(--header-height);
 
-//     background-image: url('../assets/images/archaiologikos_avdira.jpg');
+  background-image: linear-gradient(rgba(#000, 0.1) 0%, rgba(#000, 0.1) 100%),
+    url('../assets/images/hero_image.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-blend-mode: darken;
 
-//     background-size: cover;
-//     background-repeat: no-repeat;
-//     background-position: center;
+  position: relative;
 
-//     background-attachment: fixed;
-//   }
+  &__title {
+    max-width: 15ch;
+    color: var(--color-white);
 
-//   &__card-container {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: flex-start;
-//     align-items: center;
-//     gap: 3rem;
+    position: relative;
+    z-index: 20;
+  }
 
-//     margin-top: -30vh;
+  &__subtitle {
+    font-family: var(--ff-dancing);
+    font-size: clamp(1.25rem, 0.9776rem + 1.2821vw, 2.5rem);
+    line-height: 0.5;
 
-//     z-index: 5;
-//   }
-// }
-// /*Media queries for hero section */
-// @media screen and (min-width: 65em) {
-//   .hero {
-//     &__background-container {
-//       background-attachment: fixed;
-//     }
-//     &__card-container {
-//       position: absolute;
-//       bottom: 5%;
-//       left: 50%;
-//       transform: translateX(-50%);
+    position: relative;
+    z-index: 20;
+  }
 
-//       flex-direction: row;
-//       justify-content: center;
-//       align-items: flex-end;
-//       gap: 1.5rem;
+  &__subtitle--1 {
+    @extend .hero__subtitle;
+    color: var(--color-secondary);
+  }
 
-//       margin-top: 0;
-//       padding: 0;
-//     }
-//   }
-// }
-// /* Hero section styling end */
+  &__subtitle--2 {
+    @extend .hero__subtitle;
+    color: var(--color-tertiary);
+  }
+
+  &__fader {
+    position: absolute;
+    inset: 0;
+
+    background-image: linear-gradient(
+      to bottom,
+      rgba(7, 17, 107, 1) 0%,
+      rgba(7, 17, 107, 0.1) 25%,
+      rgba(7, 17, 107, 0.1) 25%,
+      rgba(7, 17, 107, 0.1) 60%,
+      rgba(7, 17, 107, 0.1) 60%,
+      rgba(255, 255, 255, 0.15) 80%,
+      rgba(255, 255, 255, 0.15) 80%,
+      rgba(255, 255, 255, 1) 100%
+    );
+
+    z-index: 10;
+  }
+}
+/*Media queries for hero section */
+@media screen and (min-width: 65em) {
+  .hero {
+    // &__background-container {
+    //   background-attachment: fixed;
+    // }
+  }
+}
+/* Hero section styling end */
+
+/* Sightseeing section styling start */
+.sightseeing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+
+  &__title {
+  }
+
+  &__content-wrapper {
+    display: grid;
+    grid-template-areas:
+      'card1'
+      'card2'
+      'card3';
+
+    // grid-auto-rows: 1fr;
+    row-gap: 1rem;
+  }
+
+  &__item--1 {
+    grid-area: card1;
+  }
+
+  &__item--2 {
+    grid-area: card2;
+  }
+
+  &__item--3 {
+    grid-area: card3;
+  }
+}
+/* Sightseeing section styling end */
+
+/* Experiences section styling start */
+.experiences {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+
+  &__title {
+  }
+
+  &__content-wrapper {
+    display: grid;
+    grid-template-areas:
+      'card1'
+      'card2'
+      'card3'
+      'card4';
+
+    row-gap: 1rem;
+  }
+
+  &__item--1 {
+    grid-area: card1;
+  }
+
+  &__item--2 {
+    grid-area: card2;
+  }
+
+  &__item--3 {
+    grid-area: card3;
+  }
+
+  &__item--4 {
+    grid-area: card4;
+  }
+}
+/* Experiences section styling end */
+
+/* News section styling start */
+.news {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  &__title {
+  }
+
+  &__btn-box {
+  }
+
+  &__slider {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+}
+/* News section styling end */
+
+/* Video-presenation section styling start */
+.video-presenation {
+}
+/* Video-presenation section styling end */
+
+/* Events section styling start */
+.events {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  &__title {
+  }
+
+  &__btn-box {
+  }
+
+  &__slider {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+}
+/* Events section styling start */
 
 // /* Welcome section styling start */
 // .welcome {

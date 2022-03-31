@@ -19,6 +19,7 @@
   --ff-dancing: 'Dancing Script', cursive;
   --ff-roboto: 'Roboto', sans-serif;
   --ff-roboto-slab: 'Roboto Slab', serif;
+  --fira-sans: 'Fira Sans', sans-serif;
 
   /* Padding CSS variables*/
   --pad-inline-small: 4%;
@@ -108,38 +109,39 @@ h6 {
 }
 
 h1 {
-  font-size: clamp(2.1rem, 1.56rem + 1.44vw, 3rem);
-  font-weight: 500;
+  font-family: var(--fira-sans);
+  font-size: clamp(2rem, 1.0649rem + 4.1558vw, 6rem);
+  font-weight: 900;
 
   text-align: center;
-  margin-block: 2rem 4rem;
 }
 
 h2 {
-  font-family: var(--ff-roboto-slab);
-  font-size: clamp(1.25rem, 1.1rem + 0.4vw, 1.5rem);
-  font-weight: 600;
+  font-family: var(--ff-roboto);
+  font-size: clamp(1.5rem, 1.1494rem + 1.5584vw, 3rem);
+  font-weight: 900;
+  text-align: center;
 }
 
 h3,
 h4 {
   font-family: var(--ff-roboto);
   font-size: clamp(1.25rem, 1.1rem + 0.4vw, 1.5rem);
-  font-weight: 700;
+  font-weight: 900;
 }
 
 p {
-  font-size: clamp(1rem, 0.925rem + 0.2vw, 1.125rem);
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0.5px;
+  // font-size: clamp(1rem, 0.925rem + 0.2vw, 1.125rem);
+  // font-weight: 400;
+  // line-height: 1.5;
+  // letter-spacing: 0.5px;
 }
 
 // Link styles in the right order
 a {
   font-family: inherit;
   font-size: clamp(1rem, 0.925rem + 0.2vw, 1.125rem);
-  font-weight: 400;
+  font-weight: 700;
   color: var(--color-primary);
   letter-spacing: 0.5px;
   text-decoration: none;
@@ -186,67 +188,68 @@ input {
   color: var(--color-primary);
 }
 
-// /* General styling properties and typography end */
+/* General styling properties and typography end */
 
-// /* Utility classes start */
-// .home-container-center,
-// .home-container-right,
-// .home-container-left {
-//   width: 90%;
-//   margin: 0 auto;
-// }
+/* Utility classes start */
+.home-container-center,
+.home-container-right,
+.home-container-left {
+  width: 95%;
+  margin: 0 auto;
+  padding-block: var(--pad-block-small);
+}
 
-// @media screen and (min-width: 40em) {
-//   .home-container-center,
-//   .home-container-right,
-//   .home-container-left {
-//     width: 85%;
-//     margin: 0 auto;
-//   }
-// }
+@media screen and (min-width: 40em) {
+  .home-container-center,
+  .home-container-right,
+  .home-container-left {
+    width: 85%;
+    margin: 0 auto;
+  }
+}
 
-// @media screen and (min-width: 65em) {
-//   .home-container-center {
-//     width: 90%;
-//     margin: 0 auto;
-//   }
+@media screen and (min-width: 65em) {
+  .home-container-center {
+    width: 90%;
+    margin: 0 auto;
+  }
 
-//   .home-container-right {
-//     width: 95%;
-//     margin: 0 0 var(--pad-block-medium) auto;
-//   }
+  .home-container-right {
+    width: 95%;
+    margin: 0 0 var(--pad-block-medium) auto;
+  }
 
-//   .home-container-left {
-//     width: 95%;
-//     margin: 0 0 0 auto;
-//   }
-// }
+  .home-container-left {
+    width: 95%;
+    margin: 0 0 0 auto;
+  }
+}
 
-// @media screen and (min-width: 160em) {
-//   .home-container-center,
-//   .home-container-right,
-//   .home-container-left {
-//     max-width: 1800px;
-//     margin: 0 auto;
-//   }
-// }
+@media screen and (min-width: 160em) {
+  .home-container-center,
+  .home-container-right,
+  .home-container-left {
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+}
 
-// .hide {
-//   opacity: 0;
-//   visibility: hidden;
-// }
+.hide {
+  opacity: 0;
+  visibility: hidden;
+}
 
-// .appear {
-//   display: block;
-// }
+.appear {
+  display: block;
+}
 
-// .disappear {
-//   display: none;
-// }
+.disappear {
+  display: none;
+}
 
-// .current.header__nav-link {
-//   &::before {
-//     transform: scaleY(1);
-//   }
-// }
-// /* Utility classes end */
+.current.header__nav-link {
+  &::before {
+    transform: scaleY(1);
+  }
+}
+/* Utility classes end */
