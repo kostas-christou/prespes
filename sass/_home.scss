@@ -915,6 +915,64 @@
 }
 /* Events section styling start */
 
+/* Newsletter section styling start */
+.newsletter {
+  padding-inline: 10vw;
+  background-color: var(--color-tertiary);
+  &__title {
+    margin-bottom: 2rem;
+    line-height: 1.3;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  &__input-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__input {
+    padding: 0.25em 0.75em;
+    border: 0;
+
+    &:focus-within {
+      outline: 2px solid var(--color-primary);
+    }
+  }
+
+  &__policy {
+    max-width: 65ch;
+    font-size: clamp(0.75rem, 0.7099rem + 0.1887vw, 0.875rem);
+  }
+
+  &__btn {
+    padding: 0.75em 2.15em;
+    border: 0;
+    background-color: var(--color-primary);
+    font-size: clamp(0.875rem, 0.8478rem + 0.1282vw, 1rem);
+    font-weight: 700;
+    color: var(--color-white);
+
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      background-color: var(--color-secondary);
+      color: var(--color-primary);
+    }
+  }
+}
+/* Newsletter section styling end */
+
 // /* Welcome section styling start */
 // .welcome {
 //   &__content-wrapper {
