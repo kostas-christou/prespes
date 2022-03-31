@@ -6,18 +6,18 @@
   gap: 0.5rem;
   padding-block: 1rem;
 
-  // background-color: var(--color-white);
   background-color: transparent;
-  // box-shadow: 0 1px 10px 0 var(--color-grey-light);
+
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
 
   &__logo-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
 
     width: fit-content;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
   }
 
   &__logo {
@@ -27,12 +27,17 @@
 
     // width: var(--header-height);
     // aspect-ratio: 1;
+
+    & img {
+      width: 90%;
+      height: 90%;
+    }
   }
 
   &__logo-title {
     font-family: var(--ff-dancing);
-    // font-size: clamp(1rem, 0.7rem + 0.8vw, 1.5rem);
     font-size: clamp(1.5rem, 1.2586rem + 1.1034vw, 2.5rem);
+    color: var(--color-white);
   }
 
   &__nav {
@@ -63,6 +68,7 @@
     padding: 0.5em 0;
     font-family: var(--ff-roboto-slab);
     font-weight: 700;
+    color: var(--color-white);
 
     position: relative;
     transition: color 0.25s ease-in-out;
@@ -94,12 +100,12 @@
     cursor: pointer;
 
     & p {
-      color: var(--color-primary);
+      color: var(--color-white);
     }
 
     & svg {
       width: clamp(1.1rem, 0.7327rem + 1.4694vw, 2rem);
-      fill: var(--color-primary);
+      fill: var(--color-white);
     }
 
     &:hover svg {
@@ -118,7 +124,7 @@
 
   &__search {
     & svg {
-      stroke: var(--color-primary);
+      stroke: var(--color-white);
     }
   }
 
@@ -210,49 +216,83 @@
     }
   }
 
-  @media screen and (min-width: 40em) {
-    .header {
-      &__icon-list {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1rem;
+  &--scrolled {
+    background-color: var(--color-white);
+    box-shadow: 0 1px 10px 0 var(--color-grey-light);
 
-        margin: 0 0.75rem 0 auto;
+    & .header__logo-title {
+      color: var(--color-primary);
+    }
+
+    & .header__nav-link {
+      color: var(--color-primary);
+    }
+
+    & .header__icon-item {
+      & svg {
+        fill: var(--color-primary);
       }
 
-      &__icon-item {
-        display: flex;
-        align-items: center;
+      & p {
+        color: var(--color-primary);
+      }
+    }
+
+    & .header__search {
+      & svg {
+        stroke: var(--color-primary);
       }
     }
   }
+}
 
-  @media screen and (min-width: 85.375em) {
-    .header {
+/* Media queries for header */
+@media screen and (min-width: 40em) {
+  .header {
+    &__icon-list {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+
+      margin: 0 0.75rem 0 auto;
+    }
+
+    &__icon-item:not(:first-child) {
+      display: flex;
+    }
+
+    &__icon-item {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (min-width: 85.375em) {
+  .header {
+    gap: 1.5rem;
+
+    &__nav {
+      position: unset;
+      margin: 0 auto;
+
+      transform: translateX(0);
+      background-color: transparent;
+    }
+
+    &__nav-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       gap: 1.5rem;
 
-      &__nav {
-        position: unset;
-        margin: 0 auto;
+      margin-top: 0;
+    }
 
-        transform: translateX(0);
-        background-color: transparent;
-      }
-
-      &__nav-list {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1.5rem;
-
-        margin-top: 0;
-      }
-
-      &__icon-list {
-        margin-left: 0;
-      }
+    &__icon-list {
+      margin-left: 0;
     }
   }
 }
@@ -646,7 +686,8 @@
 /* Aside nav right styling start */
 .aside {
   &--right {
-    box-shadow: 1px 0 8px 0 var(--color-grey-light);
+    background-color: transparent;
+    transition: all 0.15s ease;
   }
   &__nav-list {
     display: flex;
@@ -671,11 +712,11 @@
     }
 
     & path {
-      fill: var(--color-primary);
+      fill: var(--color-white);
     }
 
     & circle {
-      stroke: var(--color-primary);
+      stroke: var(--color-white);
     }
 
     &:hover path {
@@ -710,6 +751,23 @@
       border: none;
       background-color: transparent;
       cursor: pointer;
+    }
+  }
+
+  &--scrolled {
+    &.aside--right {
+      background-color: var(--color-white);
+      box-shadow: 1px 0 8px 0 var(--color-grey-light);
+    }
+
+    & .aside__list-item {
+      & path {
+        fill: var(--color-primary);
+      }
+
+      & circle {
+        stroke: var(--color-primary);
+      }
     }
   }
 }

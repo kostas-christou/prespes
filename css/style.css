@@ -279,7 +279,7 @@ input {
 /* Arrow-button end */
 /* Section-button start */
 .section-btn {
-  padding: 0.75em 0 0.75em 2em;
+  padding: 0.75em 0 0.75em 2.5em;
   color: var(--color-primary);
   background-color: var(--color-secondary);
   transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out, padding 0.25s ease-in-out;
@@ -291,7 +291,7 @@ input {
   transition: opacity 0.25s ease-in-out;
 }
 .section-btn:hover {
-  padding: 0.75em 1em 0.75em 1em;
+  padding: 0.75em 1em 0.75em 1.5em;
   color: var(--color-white);
   background-color: var(--color-primary);
 }
@@ -682,6 +682,7 @@ input {
   color: var(--color-white);
 }
 .video__text {
+  max-width: 60ch;
   color: var(--color-white);
 }
 .video__play-btn-container {
@@ -881,23 +882,29 @@ body.contrast * {
   gap: 0.5rem;
   padding-block: 1rem;
   background-color: transparent;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 .header__logo-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   width: fit-content;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 .header__logo {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.header__logo img {
+  width: 90%;
+  height: 90%;
+}
 .header__logo-title {
   font-family: var(--ff-dancing);
   font-size: clamp(1.5rem, 1.2586rem + 1.1034vw, 2.5rem);
+  color: var(--color-white);
 }
 .header__nav {
   position: fixed;
@@ -922,6 +929,7 @@ body.contrast * {
   padding: 0.5em 0;
   font-family: var(--ff-roboto-slab);
   font-weight: 700;
+  color: var(--color-white);
   position: relative;
   transition: color 0.25s ease-in-out;
 }
@@ -947,11 +955,11 @@ body.contrast * {
   cursor: pointer;
 }
 .header__icon-item p {
-  color: var(--color-primary);
+  color: var(--color-white);
 }
 .header__icon-item svg {
   width: clamp(1.1rem, 0.7327rem + 1.4694vw, 2rem);
-  fill: var(--color-primary);
+  fill: var(--color-white);
 }
 .header__icon-item:hover svg {
   fill: var(--color-secondary);
@@ -964,7 +972,7 @@ body.contrast * {
   display: none;
 }
 .header__search svg {
-  stroke: var(--color-primary);
+  stroke: var(--color-white);
 }
 .header__weather img {
   width: 3rem;
@@ -1024,30 +1032,54 @@ body.contrast * {
   bottom: 0;
   transform: translateX(-50%) rotate(90deg);
 }
+.header--scrolled {
+  background-color: var(--color-white);
+  box-shadow: 0 1px 10px 0 var(--color-grey-light);
+}
+.header--scrolled .header__logo-title {
+  color: var(--color-primary);
+}
+.header--scrolled .header__nav-link {
+  color: var(--color-primary);
+}
+.header--scrolled .header__icon-item svg {
+  fill: var(--color-primary);
+}
+.header--scrolled .header__icon-item p {
+  color: var(--color-primary);
+}
+.header--scrolled .header__search svg {
+  stroke: var(--color-primary);
+}
+
+/* Media queries for header */
 @media screen and (min-width: 40em) {
-  .header .header__icon-list {
+  .header__icon-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
     margin: 0 0.75rem 0 auto;
   }
-  .header .header__icon-item {
+  .header__icon-item:not(:first-child) {
+    display: flex;
+  }
+  .header__icon-item {
     display: flex;
     align-items: center;
   }
 }
 @media screen and (min-width: 85.375em) {
-  .header .header {
+  .header {
     gap: 1.5rem;
   }
-  .header .header__nav {
+  .header__nav {
     position: unset;
     margin: 0 auto;
     transform: translateX(0);
     background-color: transparent;
   }
-  .header .header__nav-list {
+  .header__nav-list {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -1055,11 +1087,10 @@ body.contrast * {
     gap: 1.5rem;
     margin-top: 0;
   }
-  .header .header__icon-list {
+  .header__icon-list {
     margin-left: 0;
   }
 }
-
 /* Header styling end */
 /* Expandable menu styling start */
 .full-menu {
@@ -1336,7 +1367,8 @@ body.contrast * {
 /* Expandable menu styling end */
 /* Aside nav right styling start */
 .aside--right {
-  box-shadow: 1px 0 8px 0 var(--color-grey-light);
+  background-color: transparent;
+  transition: all 0.15s ease;
 }
 .aside__nav-list {
   display: flex;
@@ -1357,10 +1389,10 @@ body.contrast * {
   width: clamp(1.35rem, 1.0847rem + 1.0612vw, 2rem);
 }
 .aside__list-item path {
-  fill: var(--color-primary);
+  fill: var(--color-white);
 }
 .aside__list-item circle {
-  stroke: var(--color-primary);
+  stroke: var(--color-white);
 }
 .aside__list-item:hover path {
   fill: var(--color-secondary);
@@ -1379,6 +1411,16 @@ body.contrast * {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+.aside--scrolled.aside--right {
+  background-color: var(--color-white);
+  box-shadow: 1px 0 8px 0 var(--color-grey-light);
+}
+.aside--scrolled .aside__list-item path {
+  fill: var(--color-primary);
+}
+.aside--scrolled .aside__list-item circle {
+  stroke: var(--color-primary);
 }
 
 /* Aside nav right styling end */

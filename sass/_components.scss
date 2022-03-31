@@ -23,7 +23,7 @@
 
 /* Section-button start */
 .section-btn {
-  padding: 0.75em 0 0.75em 2em;
+  padding: 0.75em 0 0.75em 2.5em;
   color: var(--color-primary);
   background-color: var(--color-secondary);
 
@@ -39,7 +39,7 @@
   }
 
   &:hover {
-    padding: 0.75em 1em 0.75em 1em;
+    padding: 0.75em 1em 0.75em 1.5em;
     color: var(--color-white);
     background-color: var(--color-primary);
 
@@ -717,6 +717,7 @@
   }
 
   &__text {
+    max-width: 60ch;
     color: var(--color-white);
   }
 

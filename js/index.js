@@ -1,6 +1,7 @@
 const expandLinks = document.querySelectorAll('.expand-link');
 const hamMenu = document.querySelector('.header__ham-menu');
 const headerNav = document.querySelector('.header__nav');
+const header = document.querySelector('.header');
 const asideRight = document.querySelector('.aside--right');
 const fullMenusLeft = document.querySelectorAll('.full-menu--left');
 const fullMenuRight = document.querySelector('.full-menu--right');
@@ -23,6 +24,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   weatherIcon.src = `${response.data.current.condition.icon}`;
   weatherTemp.innerHTML = `${response.data.current.temp_c} <sup>o</sup>C`;
 });
+
+// Change header bg-color when scrolling
+window.addEventListener('scroll', changeHeaderAndAside);
+
+function changeHeaderAndAside() {
+  console.log(window.scrollY);
+
+  if (window.scrollY > 0) {
+    header.classList.add('header--scrolled');
+    asideRight.classList.add('aside--scrolled');
+  } else {
+    header.classList.remove('header--scrolled');
+    asideRight.classList.remove('aside--scrolled');
+  }
+}
 
 // Functionality for mega menu both for mobile and desktop
 function openDesktopMenu(menuIndex = 0) {
