@@ -29,9 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 window.addEventListener('scroll', changeHeaderAndAside);
 
 function changeHeaderAndAside() {
-  console.log(window.scrollY);
-
-  if (window.scrollY > 0) {
+  if (window.scrollY > 150) {
     header.classList.add('header--scrolled');
     asideRight.classList.add('aside--scrolled');
   } else {
@@ -57,8 +55,10 @@ function openDesktopMenu(menuIndex = 0) {
   fullMenusLeft[menuIndex].classList.remove('full-menu--collapse');
   fullMenusLeft[menuIndex].classList.add('full-menu--expand');
   // Show the right part of the full menu
-  fullMenuRight.classList.remove('full-menu--collapse');
-  fullMenuRight.classList.add('full-menu--expand');
+  if (fullMenuRight) {
+    fullMenuRight.classList.remove('full-menu--collapse');
+    fullMenuRight.classList.add('full-menu--expand');
+  }
   // Show the overlay
   fullMenuOverlay.classList.remove('disappear');
   fullMenuOverlay.classList.add('appear');
@@ -83,8 +83,10 @@ function closeDesktopMenu(menuIndex = 0) {
     openLeftMenu.classList.add('full-menu--collapse');
   }
   // Hide the right part of the full menu
-  fullMenuRight.classList.remove('full-menu--expand');
-  fullMenuRight.classList.add('full-menu--collapse');
+  if (fullMenuRight) {
+    fullMenuRight.classList.remove('full-menu--expand');
+    fullMenuRight.classList.add('full-menu--collapse');
+  }
   // Hide the accessibility menu
   const accessibilityMenu = document.getElementById('accessibilityBar');
   accessibilityMenu.classList.remove('active');
@@ -115,8 +117,10 @@ function openMobileMenu(menuIndex = 0) {
   // For small screens show the header navbar as expandable
   headerNav.style.transform = 'translateX(0)';
   // Show the right part of the full menu
-  fullMenuRight.classList.remove('full-menu--collapse');
-  fullMenuRight.classList.add('full-menu--expand');
+  if (fullMenuRight) {
+    fullMenuRight.classList.remove('full-menu--collapse');
+    fullMenuRight.classList.add('full-menu--expand');
+  }
   // Remove pointer events for the rest of the document
   parallaxWrapper.style.pointerEvents = 'none';
 }
@@ -140,8 +144,10 @@ function closeMobileMenu(menuIndex = 0) {
     openLeftMenu.classList.add('full-menu--collapse');
   }
   // Hide the right part of the full menu
-  fullMenuRight.classList.remove('full-menu--expand');
-  fullMenuRight.classList.add('full-menu--collapse');
+  if (fullMenuRight) {
+    fullMenuRight.classList.remove('full-menu--expand');
+    fullMenuRight.classList.add('full-menu--collapse');
+  }
   // Hide the accessibility menu
   const accessibilityMenu = document.getElementById('accessibilityBar');
   accessibilityMenu.classList.remove('active');
@@ -178,9 +184,10 @@ function openInternalMobileMenu(menuIndex = 0) {
   fullMenusLeft[menuIndex].classList.add('full-menu--expand');
 
   // Show the right part of the full menu
-  fullMenuRight.classList.remove('full-menu--collapse');
-  fullMenuRight.classList.add('full-menu--expand');
-
+  if (fullMenuRight) {
+    fullMenuRight.classList.remove('full-menu--collapse');
+    fullMenuRight.classList.add('full-menu--expand');
+  }
   // Add an underline on the current active link, after removing the previous one (if any)
   const previousActiveLink = document.querySelector('.current');
   if (previousActiveLink) {
@@ -353,15 +360,19 @@ const newsSwiper = new Swiper('.news__swiper', {
   spaceBetween: 20,
   grabCursor: true,
   breakpoints: {
-    1040: {
-      slidesPerView: 1.5,
+    700: {
+      slidesPerView: 1.4,
       spaceBetween: 30,
     },
-    1350: {
+    1050: {
       slidesPerView: 2.5,
       spaceBetween: 40,
     },
-    2200: {
+    1550: {
+      slidesPerView: 3.5,
+      spaceBetween: 60,
+    },
+    2050: {
       slidesPerView: 3.5,
       spaceBetween: 60,
     },
@@ -377,17 +388,21 @@ const eventsSwiper = new Swiper('.events__swiper', {
   spaceBetween: 20,
   grabCursor: true,
   breakpoints: {
-    1040: {
-      slidesPerView: 1.5,
-      spaceBetween: 20,
-    },
-    1350: {
-      slidesPerView: 2.5,
+    700: {
+      slidesPerView: 1.4,
       spaceBetween: 30,
     },
-    1850: {
-      slidesPerView: 3.5,
+    1050: {
+      slidesPerView: 2.4,
+      spaceBetween: 30,
+    },
+    1550: {
+      slidesPerView: 3.4,
       spaceBetween: 50,
+    },
+    2050: {
+      slidesPerView: 3.5,
+      spaceBetween: 60,
     },
   },
   navigation: {
@@ -396,26 +411,26 @@ const eventsSwiper = new Swiper('.events__swiper', {
   },
 });
 
-const civilProtectionSwiper = new Swiper('.civil-protection__swiper', {
-  slidesPerView: 1,
-  spaceBetween: 20,
-  grabCursor: true,
-  breakpoints: {
-    1040: {
-      slidesPerView: 1.5,
-      spaceBetween: 20,
-    },
-    1350: {
-      slidesPerView: 2.5,
-      spaceBetween: 30,
-    },
-    1850: {
-      slidesPerView: 3.5,
-      spaceBetween: 50,
-    },
-  },
-  navigation: {
-    nextEl: '.civil-protection__swiper-button-next',
-    prevEl: '.civil-protection__swiper-button-prev',
-  },
-});
+// const civilProtectionSwiper = new Swiper('.civil-protection__swiper', {
+//   slidesPerView: 1,
+//   spaceBetween: 20,
+//   grabCursor: true,
+//   breakpoints: {
+//     1040: {
+//       slidesPerView: 1.5,
+//       spaceBetween: 20,
+//     },
+//     1350: {
+//       slidesPerView: 2.5,
+//       spaceBetween: 30,
+//     },
+//     1850: {
+//       slidesPerView: 3.5,
+//       spaceBetween: 50,
+//     },
+//   },
+//   navigation: {
+//     nextEl: '.civil-protection__swiper-button-next',
+//     prevEl: '.civil-protection__swiper-button-prev',
+//   },
+// });

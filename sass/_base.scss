@@ -1,6 +1,6 @@
 :root {
   /* Color CSS variables */
-  --color-primary: #07116b;
+  --color-primary: hsl(234, 88%, 22%);
   --color-primary-light: hsl(234, 88%, 40%);
   --color-primary-extra-light: #5960a748;
   --color-secondary: #95deee;
@@ -22,14 +22,20 @@
   --fira-sans: 'Fira Sans', sans-serif;
 
   /* Padding CSS variables*/
-  --pad-inline-small: 4%;
-  --pad-inline-medium: 12.5%;
-  --pad-inline-large: 20%;
-  --pad-block-tiny: 1rem;
-  --pad-block-small: 3rem;
-  --pad-block-medium: 6rem;
-  --pad-block-large: 9rem;
-  --pad-block-xl: 15rem;
+  // --pad-inline-small: 4%;
+  // --pad-inline-medium: 12.5%;
+  // --pad-inline-large: 20%;
+  // --pad-block-tiny: 1rem;
+  // --pad-block-small: 3rem;
+  // --pad-block-medium: 6rem;
+  // --pad-block-large: 9rem;
+  // --pad-block-xl: 15rem;
+
+  /* Other variables */
+  --padding-section: clamp(4rem, 2.6154rem + 6.1538vw, 10rem);
+  --section-gap-internal: clamp(2rem, 1.3077rem + 3.0769vw, 5rem);
+  --flex-gap-small: clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
+  --margin-normal: clamp(2rem, 1.3077rem + 3.0769vw, 5rem);
 
   /* Elements height variables */
   --header-height: 3.5rem;
@@ -112,7 +118,7 @@ h1 {
   font-family: var(--fira-sans);
   font-size: clamp(2rem, 1.0649rem + 4.1558vw, 6rem);
   font-weight: 900;
-
+  line-height: 0.9;
   text-align: center;
 }
 
@@ -194,42 +200,44 @@ input {
 .home-container-center,
 .home-container-right,
 .home-container-left {
-  width: 95%;
+  width: min(90%, 100rem);
   margin: 0 auto;
-  padding-block: var(--pad-block-small);
+}
+
+.home-container-full {
 }
 
 @media screen and (min-width: 40em) {
   .home-container-center,
   .home-container-right,
   .home-container-left {
-    width: 85%;
+    width: min(calc(95% - (2 * var(--header-height))), 100rem);
     margin: 0 auto;
   }
 }
 
-@media screen and (min-width: 65em) {
+@media screen and (min-width: 60em) {
   .home-container-center {
-    width: 90%;
+    width: min(calc(90% - (2 * var(--header-height))), 100rem);
     margin: 0 auto;
   }
 
   .home-container-right {
-    width: 95%;
-    margin: 0 0 0 auto;
+    width: min(calc(95% - (2 * var(--header-height))), calc(100rem + 5%));
+    margin: 0 var(--header-height) 0 auto;
   }
 
   .home-container-left {
-    width: 95%;
-    margin: 0 auto 0 0;
+    width: min(calc(95% - (2 * var(--header-height))), calc(100rem + 5%));
+    margin: 0 auto 0 var(--header-height);
   }
 }
 
-@media screen and (min-width: 160em) {
+@media screen and (min-width: 125em) {
   .home-container-center,
   .home-container-right,
   .home-container-left {
-    max-width: 1800px;
+    width: min(calc(95% - (2 * var(--header-height))), 100rem);
     margin: 0 auto;
   }
 }

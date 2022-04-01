@@ -218,7 +218,7 @@
 
   &--scrolled {
     background-color: var(--color-white);
-    box-shadow: 0 1px 10px 0 var(--color-grey-light);
+    // box-shadow: 0 1px 10px 0 var(--color-grey-light);
 
     & .header__logo-title {
       color: var(--color-primary);
@@ -757,7 +757,7 @@
   &--scrolled {
     &.aside--right {
       background-color: var(--color-white);
-      box-shadow: 1px 0 8px 0 var(--color-grey-light);
+      // box-shadow: 1px 0 8px 0 var(--color-grey-light);
     }
 
     & .aside__list-item {
@@ -783,7 +783,7 @@
   width: 100%;
   min-height: 100vh;
 
-  background-image: linear-gradient(rgba(#000, 0.1) 0%, rgba(#000, 0.1) 100%),
+  background-image: linear-gradient(rgba(#000, 0.2) 0%, rgba(#000, 0.15) 100%),
     url('../assets/images/hero_image.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -804,7 +804,7 @@
   &__subtitle {
     font-family: var(--ff-dancing);
     font-size: clamp(1.25rem, 0.9776rem + 1.2821vw, 2.5rem);
-    line-height: 0.5;
+    line-height: 0.7;
 
     position: relative;
     z-index: 20;
@@ -854,11 +854,11 @@
   }
 
   &__fader-top {
-    top: 0;
+    top: -1px;
   }
 
   &__fader-bottom {
-    bottom: 0;
+    bottom: -1px;
   }
 }
 /*Media queries for hero section */
@@ -877,7 +877,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: var(--section-gap-internal);
+
+  padding-top: var(--padding-section);
 
   &__title {
   }
@@ -889,7 +891,9 @@
       'card2'
       'card3';
 
-    // grid-auto-rows: 1fr;
+    align-items: center;
+    justify-items: center;
+
     row-gap: 1rem;
   }
 
@@ -905,6 +909,21 @@
     grid-area: card3;
   }
 }
+
+/* Media queries sightseeing section */
+@media screen and (min-width: 60em) {
+  .sightseeing {
+    &__content-wrapper {
+      grid-template-areas:
+        'card1 card2'
+        'card1 card3';
+
+      grid-template-columns: 1.33fr 1fr;
+      row-gap: 2rem;
+      column-gap: 2rem;
+    }
+  }
+}
 /* Sightseeing section styling end */
 
 /* Experiences section styling start */
@@ -913,7 +932,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: var(--section-gap-internal);
+
+  padding-top: var(--padding-section);
 
   &__title {
   }
@@ -945,6 +966,30 @@
     grid-area: card4;
   }
 }
+/* Media queries for experiences section */
+@media screen and (min-width: 60em) {
+  .experiences {
+    &__content-wrapper {
+      grid-template-areas:
+        'card1 card2'
+        'card3 card4';
+
+      grid-template-rows: 25rem 25rem;
+      column-gap: 2rem;
+      row-gap: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 80em) {
+  .experiences {
+    &__content-wrapper {
+      grid-template-areas:
+        'card1 card2 card3'
+        'card4 card4 card4';
+    }
+  }
+}
 /* Experiences section styling end */
 
 /* News section styling start */
@@ -953,7 +998,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: var(--section-gap-internal);
+
+  padding-top: var(--padding-section);
 
   &__title {
   }
@@ -969,7 +1016,8 @@
 /* News section styling end */
 
 /* Video-presenation section styling start */
-.video-presenation {
+.video-presentation {
+  padding-top: var(--padding-section);
 }
 /* Video-presenation section styling end */
 
@@ -979,7 +1027,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: var(--section-gap-internal);
+
+  padding-top: var(--padding-section);
+  padding-bottom: var(--padding-section);
 
   &__title {
   }
@@ -996,9 +1047,10 @@
 
 /* Newsletter section styling start */
 .newsletter {
+  padding-block: calc(var(--padding-section) / 2);
   padding-inline: 10vw;
-  margin-block: 3rem;
   background-color: var(--color-tertiary);
+
   &__title {
     margin-bottom: 2rem;
     line-height: 1.3;
@@ -1055,8 +1107,10 @@
 
 /* Trip-planner section styling start */
 .trip-planner {
+  padding-top: var(--padding-section);
+
   &__title {
-    margin-bottom: 3rem;
+    margin-bottom: var(--margin-normal);
   }
 
   &__info-box {
@@ -1090,14 +1144,16 @@
 
 /* Follow-us section styling start */
 .follow {
+  padding-top: var(--padding-section);
+  padding-bottom: var(--padding-section);
+
   &__title {
-    margin-bottom: 3rem;
+    margin-bottom: var(--margin-normal);
   }
 
   &__content-box {
     display: grid;
-
-    gap: 1rem;
+    gap: var(--flex-gap-small);
   }
 }
 
@@ -1106,8 +1162,6 @@
   .follow {
     &__content-box {
       display: grid;
-
-      gap: 1rem;
     }
   }
 }
@@ -1136,7 +1190,8 @@
 /* Footer styling start */
 .footer {
   // min-height: calc(100vh - var(--header-height));
-  padding-block: 2rem var(--header-height);
+  padding-block: var(--header-height);
+  padding-inline: 8vw;
   background-color: var(--color-primary);
 
   position: relative;
@@ -1155,6 +1210,8 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+
+    max-width: 8rem;
 
     & img {
       width: 60%;
@@ -1241,7 +1298,7 @@
 
   &__fader {
     position: absolute;
-    bottom: 0;
+    bottom: 1px;
     left: 0;
     right: 0;
 
@@ -1257,8 +1314,8 @@
     height: var(--footer-height);
 
     background-image: url('../assets/images/footer_image.jpg');
-    background-size: cover;
-    background-position: center;
+    background-size: contain;
+    background-position: bottom;
     background-repeat: no-repeat;
     background-attachment: fixed;
 
@@ -1267,11 +1324,11 @@
 }
 
 /* Media queries for footer */
-@media screen and (min-width: 40em) {
-  .footer {
-    padding-block: 3rem 1rem;
-  }
-}
+// @media screen and (min-width: 40em) {
+//   .footer {
+//     padding-block: 3rem 1rem;
+//   }
+// }
 
 @media screen and (min-width: 55em) {
   .footer {
@@ -1312,7 +1369,7 @@
     // left: var(--header-height);
     // right: var(--header-height);
     // min-height: var(--footer-height);
-    padding: 8vh 3rem 4vh;
+    // padding: 8vh 3rem 4vh;
 
     &__content {
       flex-direction: row;

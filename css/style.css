@@ -1,6 +1,6 @@
 :root {
   /* Color CSS variables */
-  --color-primary: #07116b;
+  --color-primary: hsl(234, 88%, 22%);
   --color-primary-light: hsl(234, 88%, 40%);
   --color-primary-extra-light: #5960a748;
   --color-secondary: #95deee;
@@ -20,14 +20,11 @@
   --ff-roboto-slab: "Roboto Slab", serif;
   --fira-sans: "Fira Sans", sans-serif;
   /* Padding CSS variables*/
-  --pad-inline-small: 4%;
-  --pad-inline-medium: 12.5%;
-  --pad-inline-large: 20%;
-  --pad-block-tiny: 1rem;
-  --pad-block-small: 3rem;
-  --pad-block-medium: 6rem;
-  --pad-block-large: 9rem;
-  --pad-block-xl: 15rem;
+  /* Other variables */
+  --padding-section: clamp(4rem, 2.6154rem + 6.1538vw, 10rem);
+  --section-gap-internal: clamp(2rem, 1.3077rem + 3.0769vw, 5rem);
+  --flex-gap-small: clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
+  --margin-normal: clamp(2rem, 1.3077rem + 3.0769vw, 5rem);
   /* Elements height variables */
   --header-height: 3.5rem;
   --footer-height: 50vh;
@@ -104,6 +101,7 @@ h1 {
   font-family: var(--fira-sans);
   font-size: clamp(2rem, 1.0649rem + 4.1558vw, 6rem);
   font-weight: 900;
+  line-height: 0.9;
   text-align: center;
 }
 
@@ -161,40 +159,39 @@ input {
 .home-container-center,
 .home-container-right,
 .home-container-left {
-  width: 95%;
+  width: min(90%, 100rem);
   margin: 0 auto;
-  padding-block: var(--pad-block-small);
 }
 
 @media screen and (min-width: 40em) {
   .home-container-center,
 .home-container-right,
 .home-container-left {
-    width: 85%;
+    width: min(95% - 2 * var(--header-height), 100rem);
     margin: 0 auto;
   }
 }
-@media screen and (min-width: 65em) {
+@media screen and (min-width: 60em) {
   .home-container-center {
-    width: 90%;
+    width: min(90% - 2 * var(--header-height), 100rem);
     margin: 0 auto;
   }
 
   .home-container-right {
-    width: 95%;
-    margin: 0 0 0 auto;
+    width: min(95% - 2 * var(--header-height), 100rem + 5%);
+    margin: 0 var(--header-height) 0 auto;
   }
 
   .home-container-left {
-    width: 95%;
-    margin: 0 auto 0 0;
+    width: min(95% - 2 * var(--header-height), 100rem + 5%);
+    margin: 0 auto 0 var(--header-height);
   }
 }
-@media screen and (min-width: 160em) {
+@media screen and (min-width: 125em) {
   .home-container-center,
 .home-container-right,
 .home-container-left {
-    max-width: 1800px;
+    width: min(95% - 2 * var(--header-height), 100rem);
     margin: 0 auto;
   }
 }
@@ -307,7 +304,9 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3rem 1rem;
+  width: 100%;
+  height: 100%;
+  padding: clamp(1rem, 0.0769rem + 4.1026vw, 5rem);
   background-image: url("../assets/images/agios_achillios.jpg");
   background-size: cover;
   background-position: center;
@@ -354,7 +353,7 @@ input {
 
 @media screen and (hover: hover) {
   .sightseeing-card, .sightseeing-card--primary {
-    background-size: 100%;
+    background-size: 120%;
     transition: background-size 0.5s ease-in-out;
   }
   .sightseeing-card__title {
@@ -365,13 +364,12 @@ input {
     animation: textSlideOut 0.5s ease forwards;
   }
   .sightseeing-card:hover, .sightseeing-card--primary:hover {
-    background-size: 110%;
+    background-size: 130%;
   }
   .sightseeing-card:hover .sightseeing-card__title, .sightseeing-card--primary:hover .sightseeing-card__title {
     animation: titleSlideIn 0.75s ease forwards;
   }
   .sightseeing-card:hover .sightseeing-card__text, .sightseeing-card--primary:hover .sightseeing-card__text {
-    margin-bottom: 1rem;
     animation: textSlideIn 0.75s ease forwards;
   }
   .sightseeing-card:hover .sightseeing-card__arrow, .sightseeing-card--primary:hover .sightseeing-card__arrow {
@@ -394,8 +392,8 @@ input {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  max-width: 50rem;
-  aspect-ratio: 3/2;
+  width: 100%;
+  min-height: 23rem;
   padding: 3rem 1rem;
   background-size: cover;
   background-position: center;
@@ -408,6 +406,9 @@ input {
 }
 .experiences-card__title {
   margin-bottom: 3rem;
+}
+.experiences-card__text {
+  max-width: 65ch;
 }
 .experiences-card__link {
   padding: 0.5rem;
@@ -506,9 +507,6 @@ input {
 }
 /* News-card end */
 /* Events-card start */
-.events-card {
-  width: fit-content;
-}
 .events-card__img {
   width: 90%;
   margin-left: auto;
@@ -658,8 +656,7 @@ input {
 /* Video start */
 .video {
   width: 100%;
-  min-height: 25rem;
-  max-height: calc(97vh - var(--header-height));
+  height: clamp(25rem, 80vh, 60rem);
   position: relative;
 }
 .video__overlay {
@@ -1034,7 +1031,6 @@ body.contrast * {
 }
 .header--scrolled {
   background-color: var(--color-white);
-  box-shadow: 0 1px 10px 0 var(--color-grey-light);
 }
 .header--scrolled .header__logo-title {
   color: var(--color-primary);
@@ -1414,7 +1410,6 @@ body.contrast * {
 }
 .aside--scrolled.aside--right {
   background-color: var(--color-white);
-  box-shadow: 1px 0 8px 0 var(--color-grey-light);
 }
 .aside--scrolled .aside__list-item path {
   fill: var(--color-primary);
@@ -1432,7 +1427,7 @@ body.contrast * {
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%), url("../assets/images/hero_image.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.15) 100%), url("../assets/images/hero_image.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1449,7 +1444,7 @@ body.contrast * {
 .hero__subtitle, .hero__subtitle--2, .hero__subtitle--1 {
   font-family: var(--ff-dancing);
   font-size: clamp(1.25rem, 0.9776rem + 1.2821vw, 2.5rem);
-  line-height: 0.5;
+  line-height: 0.7;
   position: relative;
   z-index: 20;
 }
@@ -1471,10 +1466,10 @@ body.contrast * {
   object-fit: contain;
 }
 .hero__fader-top {
-  top: 0;
+  top: -1px;
 }
 .hero__fader-bottom {
-  bottom: 0;
+  bottom: -1px;
 }
 
 /*Media queries for hero section */
@@ -1485,11 +1480,14 @@ body.contrast * {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: var(--section-gap-internal);
+  padding-top: var(--padding-section);
 }
 .sightseeing__content-wrapper {
   display: grid;
   grid-template-areas: "card1" "card2" "card3";
+  align-items: center;
+  justify-items: center;
   row-gap: 1rem;
 }
 .sightseeing__item--1 {
@@ -1502,6 +1500,15 @@ body.contrast * {
   grid-area: card3;
 }
 
+/* Media queries sightseeing section */
+@media screen and (min-width: 60em) {
+  .sightseeing__content-wrapper {
+    grid-template-areas: "card1 card2" "card1 card3";
+    grid-template-columns: 1.33fr 1fr;
+    row-gap: 2rem;
+    column-gap: 2rem;
+  }
+}
 /* Sightseeing section styling end */
 /* Experiences section styling start */
 .experiences {
@@ -1509,7 +1516,8 @@ body.contrast * {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: var(--section-gap-internal);
+  padding-top: var(--padding-section);
 }
 .experiences__content-wrapper {
   display: grid;
@@ -1529,6 +1537,20 @@ body.contrast * {
   grid-area: card4;
 }
 
+/* Media queries for experiences section */
+@media screen and (min-width: 60em) {
+  .experiences__content-wrapper {
+    grid-template-areas: "card1 card2" "card3 card4";
+    grid-template-rows: 25rem 25rem;
+    column-gap: 2rem;
+    row-gap: 2rem;
+  }
+}
+@media screen and (min-width: 80em) {
+  .experiences__content-wrapper {
+    grid-template-areas: "card1 card2 card3" "card4 card4 card4";
+  }
+}
 /* Experiences section styling end */
 /* News section styling start */
 .news {
@@ -1536,7 +1558,8 @@ body.contrast * {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: var(--section-gap-internal);
+  padding-top: var(--padding-section);
 }
 .news__slider {
   width: 100%;
@@ -1545,6 +1568,10 @@ body.contrast * {
 
 /* News section styling end */
 /* Video-presenation section styling start */
+.video-presentation {
+  padding-top: var(--padding-section);
+}
+
 /* Video-presenation section styling end */
 /* Events section styling start */
 .events {
@@ -1552,7 +1579,9 @@ body.contrast * {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: var(--section-gap-internal);
+  padding-top: var(--padding-section);
+  padding-bottom: var(--padding-section);
 }
 .events__slider {
   width: 100%;
@@ -1562,8 +1591,8 @@ body.contrast * {
 /* Events section styling start */
 /* Newsletter section styling start */
 .newsletter {
+  padding-block: calc(var(--padding-section) / 2);
   padding-inline: 10vw;
-  margin-block: 3rem;
   background-color: var(--color-tertiary);
 }
 .newsletter__title {
@@ -1612,8 +1641,11 @@ body.contrast * {
 
 /* Newsletter section styling end */
 /* Trip-planner section styling start */
+.trip-planner {
+  padding-top: var(--padding-section);
+}
 .trip-planner__title {
-  margin-bottom: 3rem;
+  margin-bottom: var(--margin-normal);
 }
 .trip-planner__info-box {
   display: grid;
@@ -1638,19 +1670,22 @@ body.contrast * {
 }
 /* Trip-planner section styling end */
 /* Follow-us section styling start */
+.follow {
+  padding-top: var(--padding-section);
+  padding-bottom: var(--padding-section);
+}
 .follow__title {
-  margin-bottom: 3rem;
+  margin-bottom: var(--margin-normal);
 }
 .follow__content-box {
   display: grid;
-  gap: 1rem;
+  gap: var(--flex-gap-small);
 }
 
 /* Media queries for follow-us section */
 @media screen and (min-width: 50em) {
   .follow__content-box {
     display: grid;
-    gap: 1rem;
   }
 }
 /* Follow-us section styling end */
@@ -1665,7 +1700,8 @@ body.contrast * {
 
 /* Footer styling start */
 .footer {
-  padding-block: 2rem var(--header-height);
+  padding-block: var(--header-height);
+  padding-inline: 8vw;
   background-color: var(--color-primary);
   position: relative;
 }
@@ -1682,6 +1718,7 @@ body.contrast * {
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  max-width: 8rem;
 }
 .footer__logo-container img {
   width: 60%;
@@ -1742,7 +1779,7 @@ body.contrast * {
 }
 .footer__fader {
   position: absolute;
-  bottom: 0;
+  bottom: 1px;
   left: 0;
   right: 0;
   transform: translateY(100%);
@@ -1754,19 +1791,14 @@ body.contrast * {
   width: 100%;
   height: var(--footer-height);
   background-image: url("../assets/images/footer_image.jpg");
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-position: bottom;
   background-repeat: no-repeat;
   background-attachment: fixed;
   z-index: -1;
 }
 
 /* Media queries for footer */
-@media screen and (min-width: 40em) {
-  .footer {
-    padding-block: 3rem 1rem;
-  }
-}
 @media screen and (min-width: 55em) {
   .footer__logo-container img {
     width: 80%;
@@ -1788,9 +1820,6 @@ body.contrast * {
   }
 }
 @media screen and (min-width: 65em) {
-  .footer {
-    padding: 8vh 3rem 4vh;
-  }
   .footer__content {
     flex-direction: row;
     align-items: flex-start;
