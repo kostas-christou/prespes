@@ -1,6 +1,6 @@
 :root {
   /* Color CSS variables */
-  --color-primary: hsl(234, 88%, 22%);
+  --color-primary: #071169;
   --color-primary-light: hsl(234, 88%, 40%);
   --color-primary-extra-light: #5960a748;
   --color-secondary: #95deee;
@@ -772,9 +772,15 @@ input {
   transition: transform 0.5s ease-in-out, box-shadow 0.25s ease-in-out 0.25s;
 }
 #accessibilityBar button {
-  padding: 0.5em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+  padding: 0.75em;
   border: none;
   background-color: transparent;
+  font-weight: 700;
+  text-transform: capitalize;
   cursor: pointer;
   position: relative;
   transition: background-color 0.25s ease-in-out;
@@ -824,6 +830,11 @@ body.contrast * {
   color: #e4fd00 !important;
   fill: #e4fd00 !important;
   stroke: #e4fd00 !important;
+}
+
+.accessibility-item-icon {
+  display: inline-block;
+  margin-right: 0.5em;
 }
 
 /* Accessibility widget end */

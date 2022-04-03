@@ -829,10 +829,16 @@
   transition: transform 0.5s ease-in-out, box-shadow 0.25s ease-in-out 0.25s;
 
   & button {
-    padding: 0.5em;
-    border: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
 
+    padding: 0.75em;
+    border: none;
     background-color: transparent;
+    font-weight: 700;
+    text-transform: capitalize;
     cursor: pointer;
 
     position: relative;
@@ -892,6 +898,32 @@ body.contrast * {
   color: #e4fd00 !important;
   fill: #e4fd00 !important;
   stroke: #e4fd00 !important;
+}
+
+.accessibility-item-icon {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+.contrast-icon {
+}
+
+.increase-font-icon {
+}
+
+.original-font-icon {
+}
+
+.decrease-font-icon {
+}
+
+.marker-icon {
+}
+
+.line-icon {
+}
+
+.reset-icon {
 }
 /* Accessibility widget end */
 

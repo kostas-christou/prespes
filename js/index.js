@@ -14,6 +14,7 @@ const mediaQueryMax1366 = window.matchMedia('(max-width: 85.374em)');
 const mediaQueryMin1366 = window.matchMedia('(min-width: 85.375em)');
 const weatherTemp = document.querySelector('.header__weather-temp');
 const weatherIcon = document.querySelector('.header__weather-icon');
+const accessBtn = document.getElementById('universalAccessBtn');
 
 // Fetch weather info from external API (weatherapi.com)
 document.addEventListener('DOMContentLoaded', async () => {
@@ -23,6 +24,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   weatherIcon.src = `${response.data.current.condition.icon}`;
   weatherTemp.innerHTML = `${response.data.current.temp_c} <sup>o</sup>C`;
+});
+
+// Change header bg-color depending on the accessibility widget state
+accessBtn.addEventListener('click', () => {
+  const accessBar = document.getElementById('accessibilityBar');
+
+  if (
+    accessBar.classList.contains('active') &&
+    hamMenu.classList.contains('header__ham-menu--open')
+  ) {
+    header.classList.remove('header--scrolled');
+    asideRight.classList.remove('aside--scrolled');
+  } else {
+    header.classList.add('header--scrolled');
+    asideRight.classList.add('aside--scrolled');
+  }
 });
 
 // Change header bg-color when scrolling
@@ -43,6 +60,9 @@ function openDesktopMenu(menuIndex = 0) {
   // Change the hamburger menu icon
   hamMenu.classList.remove('header__ham-menu--open');
   hamMenu.classList.add('header__ham-menu--close');
+  // Change the bg-color of header and aside
+  header.classList.add('header--scrolled');
+  asideRight.classList.add('aside--scrolled');
   // Hide the current open left part of the full menu (if any)
   const openLeftMenu = document.querySelector(
     '.full-menu--left.full-menu--expand'
@@ -74,6 +94,9 @@ function closeDesktopMenu(menuIndex = 0) {
   // Change the hamburger menu icon
   hamMenu.classList.remove('header__ham-menu--close');
   hamMenu.classList.add('header__ham-menu--open');
+  // Change the bg-color of header and aside
+  header.classList.remove('header--scrolled');
+  asideRight.classList.remove('aside--scrolled');
   // Hide the left part of the full menu
   const openLeftMenu = document.querySelector(
     '.full-menu--left.full-menu--expand'

@@ -52,17 +52,12 @@ function initializeAccessibilityWidget() {
     button.setAttribute('data-accessibility', el.dataAccessibility);
     accessibilityBar.appendChild(button);
 
-    // const wrapIcon = document.createElement('strong');
-    // button.appendChild(wrapIcon);
-
-    // if (el.icon === 'FontAwesome') {
-    //   const icon = document.createElement('i');
-    //   wrapIcon.appendChild(icon);
-    //   icon.classList.add(...el.iconClass);
-    // } else {
-    //   const textIcon = document.createTextNode(el.icon);
-    //   wrapIcon.appendChild(textIcon);
-    // }
+    if (el.icon === 'svg') {
+      const icon = document.createElement('img');
+      icon.src = el.source;
+      button.appendChild(icon);
+      icon.classList.add(...el.iconClass);
+    }
 
     const textButton = document.createTextNode(el.text);
     button.appendChild(textButton);
@@ -73,56 +68,64 @@ function initializeAccessibilityWidget() {
       active: true,
       dataAccessibility: 'contrast',
       class: 'setAccessibility',
-      icon: 'FontAwesome',
-      iconClass: ['fas', 'fa-adjust'],
+      icon: 'svg',
+      source: '../assets/icons/contrast.svg',
+      iconClass: ['contrast-icon', 'accessibility-item-icon'],
       text: contrastText,
     },
     btnIncFont: {
       active: true,
       dataAccessibility: 'incFont',
       class: 'setAccessibility',
-      icon: 'A+',
-      iconClass: '',
+      icon: 'svg',
+      source: '../assets/icons/zoom-in.svg',
+      iconClass: ['increase-font-icon', 'accessibility-item-icon'],
       text: fontPlusText,
+    },
+
+    btnDecFont: {
+      active: true,
+      dataAccessibility: 'decFont',
+      class: 'setAccessibility',
+      icon: 'svg',
+      source: '../assets/icons/zoom-out.svg',
+      iconClass: ['decrease-font-icon', 'accessibility-item-icon'],
+      text: fontMinusText,
     },
     btnOriFont: {
       active: true,
       dataAccessibility: 'oriFont',
       class: 'setAccessibility',
-      icon: 'Aa',
-      iconClass: '',
+      icon: 'svg',
+      source: '../assets/icons/font.svg',
+      iconClass: ['original-font-icon', 'accessibility-item-icon'],
       text: fontDefaultText,
-    },
-    btnDecFont: {
-      active: true,
-      dataAccessibility: 'decFont',
-      class: 'setAccessibility',
-      icon: 'A-',
-      iconClass: '',
-      text: fontMinusText,
     },
     btnMarkerLine: {
       active: true,
       dataAccessibility: 'markerLine',
       class: 'setAccessibility',
-      icon: 'FontAwesome',
-      iconClass: ['fas', 'fa-bullseye'],
+      icon: 'svg',
+      source: '../assets/icons/target.svg',
+      iconClass: ['marker-icon', 'accessibility-item-icon'],
       text: crosshairText,
     },
     btnReadingLine: {
       active: true,
       dataAccessibility: 'readingLine',
       class: 'setAccessibility',
-      icon: 'FontAwesome',
-      iconClass: ['fas', 'fa-ruler-combined'],
+      icon: 'svg',
+      source: '../assets/icons/line.svg',
+      iconClass: ['line-icon', 'accessibility-item-icon'],
       text: rulerText,
     },
     btnReset: {
       active: true,
       dataAccessibility: 'reset',
       class: 'setAccessibility',
-      icon: 'FontAwesome',
-      iconClass: ['fas', 'fa-redo-alt'],
+      icon: 'svg',
+      source: '../assets/icons/reload.svg',
+      iconClass: ['reset-icon', 'accessibility-item-icon'],
       text: resetText,
     },
   };
@@ -271,7 +274,7 @@ function initializeAccessibilityWidget() {
           body.classList.remove(this.cssClass + this.currentState);
           this.setState(parseFloat(this.currentState) + 20);
         } else {
-          alert('Limite atingido!');
+          alert('Limit reached!');
         }
         break;
       case 'oriFont':
@@ -283,7 +286,7 @@ function initializeAccessibilityWidget() {
           body.classList.remove(this.cssClass + this.currentState);
           this.setState(parseFloat(this.currentState) - 20);
         } else {
-          alert('Limite atingido!');
+          alert('Limit reached!');
         }
         break;
       default:
