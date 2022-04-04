@@ -12,11 +12,85 @@ const backToTop = document.querySelector('.back-to-top');
 const mediaQueryMax880 = window.matchMedia('(max-width: 54.99em)');
 const mediaQueryMax1040 = window.matchMedia('(max-width: 64.99em)');
 const mediaQueryMin1040 = window.matchMedia('(min-width: 65em)');
-// const mediaQueryMax1366 = window.matchMedia('(max-width: 85.374em)');
-// const mediaQueryMin1366 = window.matchMedia('(min-width: 85.375em)');
 const weatherTemp = document.querySelector('.header__weather-temp');
 const weatherIcon = document.querySelector('.header__weather-icon');
 const accessBtn = document.getElementById('universalAccessBtn');
+
+// Helper fuctions for reusability
+// Change header bg-color depending on the accessibility widget state
+function addClassScrolled() {
+  header.classList.add('header--scrolled');
+  asideRight.classList.add('aside--scrolled');
+}
+
+function removeClassScrolled() {
+  header.classList.remove('header--scrolled');
+  asideRight.classList.remove('aside--scrolled');
+}
+
+// Function for changing the ham-menu icon
+function toggleHamMenuIcon() {
+  if (hamMenu.classList.contains('header__ham-menu--open')) {
+    hamMenu.classList.remove('header__ham-menu--open');
+    hamMenu.classList.add('header__ham-menu--close');
+  } else {
+    hamMenu.classList.remove('header__ham-menu--close');
+    hamMenu.classList.add('header__ham-menu--open');
+  }
+}
+
+// Function for hiding the currently open left menu (if any)
+function hideCurrentLeftMenu() {
+  const openLeftMenu = document.querySelector(
+    '.full-menu--left.full-menu--expand'
+  );
+  if (openLeftMenu) {
+    openLeftMenu.classList.remove('full-menu--expand');
+    openLeftMenu.classList.add('full-menu--collapse');
+  }
+}
+// Function for showing the new left menu
+function showNewLeftMenu(menuIndex) {
+  fullMenusLeft[menuIndex].classList.remove('full-menu--collapse');
+  fullMenusLeft[menuIndex].classList.add('full-menu--expand');
+}
+
+// Function for showing the overlay
+function showOverlay() {
+  fullMenuOverlay.classList.remove('disappear');
+  fullMenuOverlay.classList.add('appear');
+}
+// Function for hiding the overlay
+function hideOverlay() {
+  fullMenuOverlay.classList.remove('appear');
+  fullMenuOverlay.classList.add('disappear');
+}
+// Function for adding an underline on the current active link, after removing the previous one (if any)
+function addLinkUnderline(menuIndex) {
+  const previousActiveLink = document.querySelector('.current');
+  if (previousActiveLink) {
+    previousActiveLink.classList.remove('current');
+  }
+  expandLinks[menuIndex].classList.add('current');
+}
+
+function removeLinkUnderline() {
+  const previousActiveLink = document.querySelector('.current');
+  if (previousActiveLink) {
+    previousActiveLink.classList.remove('current');
+  }
+}
+
+function hideAccessibilityMenu() {
+  const accessibilityMenu = document.getElementById('accessibilityBar');
+  accessibilityMenu.classList.remove('active');
+}
+
+function showRightAside() {
+  if (mediaQueryMax880.matches) {
+    asideRight.style.transform = 'translateX(0)';
+  }
+}
 
 // Fetch weather info from external API (weatherapi.com)
 document.addEventListener('DOMContentLoaded', async () => {
@@ -28,7 +102,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   weatherTemp.innerHTML = `${response.data.current.temp_c} <sup>o</sup>C`;
 });
 
-// Change header bg-color depending on the accessibility widget state
 accessBtn.addEventListener('click', () => {
   const accessBar = document.getElementById('accessibilityBar');
 
@@ -36,11 +109,9 @@ accessBtn.addEventListener('click', () => {
     accessBar.classList.contains('active') &&
     hamMenu.classList.contains('header__ham-menu--open')
   ) {
-    header.classList.remove('header--scrolled');
-    asideRight.classList.remove('aside--scrolled');
+    removeClassScrolled();
   } else {
-    header.classList.add('header--scrolled');
-    asideRight.classList.add('aside--scrolled');
+    addClassScrolled();
   }
 });
 
@@ -49,83 +120,32 @@ window.addEventListener('scroll', changeHeaderAndAside);
 
 function changeHeaderAndAside() {
   if (window.scrollY > 150) {
-    header.classList.add('header--scrolled');
-    asideRight.classList.add('aside--scrolled');
+    addClassScrolled();
   } else {
-    header.classList.remove('header--scrolled');
-    asideRight.classList.remove('aside--scrolled');
+    removeClassScrolled();
   }
 }
 
 // Functionality for mega menu both for mobile and desktop
+
 function openDesktopMenu(menuIndex = 0) {
-  // Change the hamburger menu icon
-  hamMenu.classList.remove('header__ham-menu--open');
-  hamMenu.classList.add('header__ham-menu--close');
-  // Change the bg-color of header and aside
-  header.classList.add('header--scrolled');
-  asideRight.classList.add('aside--scrolled');
-  // Hide the current open left part of the full menu (if any)
-  const openLeftMenu = document.querySelector(
-    '.full-menu--left.full-menu--expand'
-  );
-  if (openLeftMenu) {
-    openLeftMenu.classList.remove('full-menu--expand');
-    openLeftMenu.classList.add('full-menu--collapse');
-  }
-  // Show the new left part of the full menu
-  fullMenusLeft[menuIndex].classList.remove('full-menu--collapse');
-  fullMenusLeft[menuIndex].classList.add('full-menu--expand');
-  // Show the right part of the full menu
-  if (fullMenuRight) {
-    fullMenuRight.classList.remove('full-menu--collapse');
-    fullMenuRight.classList.add('full-menu--expand');
-  }
-  // Show the overlay
-  fullMenuOverlay.classList.remove('disappear');
-  fullMenuOverlay.classList.add('appear');
-  // Add an underline on the current active link, after removing the previous one (if any)
-  const previousActiveLink = document.querySelector('.current');
-  if (previousActiveLink) {
-    previousActiveLink.classList.remove('current');
-  }
-  expandLinks[menuIndex].classList.add('current');
+  toggleHamMenuIcon();
+  addClassScrolled();
+  hideCurrentLeftMenu();
+  showNewLeftMenu(menuIndex);
+  showOverlay();
+  addLinkUnderline(menuIndex);
   // Remove listener for scroll
   window.removeEventListener('scroll', changeHeaderAndAside);
 }
 
 function closeDesktopMenu(menuIndex = 0) {
-  // Change the hamburger menu icon
-  hamMenu.classList.remove('header__ham-menu--close');
-  hamMenu.classList.add('header__ham-menu--open');
-  // Change the bg-color of header and aside
-  header.classList.remove('header--scrolled');
-  asideRight.classList.remove('aside--scrolled');
-  // Hide the left part of the full menu
-  const openLeftMenu = document.querySelector(
-    '.full-menu--left.full-menu--expand'
-  );
-  if (openLeftMenu) {
-    openLeftMenu.classList.remove('full-menu--expand');
-    openLeftMenu.classList.add('full-menu--collapse');
-  }
-  // Hide the right part of the full menu
-  if (fullMenuRight) {
-    fullMenuRight.classList.remove('full-menu--expand');
-    fullMenuRight.classList.add('full-menu--collapse');
-  }
-  // Hide the accessibility menu
-  const accessibilityMenu = document.getElementById('accessibilityBar');
-  accessibilityMenu.classList.remove('active');
-
-  // Hide the overlay
-  fullMenuOverlay.classList.remove('appear');
-  fullMenuOverlay.classList.add('disappear');
-  // Remove the underline on the previous active link (if any)
-  const previousActiveLink = document.querySelector('.current');
-  if (previousActiveLink) {
-    previousActiveLink.classList.remove('current');
-  }
+  toggleHamMenuIcon();
+  removeClassScrolled();
+  hideCurrentLeftMenu();
+  hideAccessibilityMenu();
+  hideOverlay();
+  removeLinkUnderline();
   // Add pointer events for the rest of the document
   parallaxWrapper.style.pointerEvents = 'auto';
   // Add listener for scroll
@@ -133,26 +153,12 @@ function closeDesktopMenu(menuIndex = 0) {
 }
 
 function openMobileMenu(menuIndex = 0) {
-  // Change the hamburger menu icon
-  hamMenu.classList.remove('header__ham-menu--open');
-  hamMenu.classList.add('header__ham-menu--close');
-  // Change the bg-color of header and aside
-  header.classList.add('header--scrolled');
-  asideRight.classList.add('aside--scrolled');
-  // For small screens show the right aside
-  if (mediaQueryMax880.matches) {
-    asideRight.style.transform = 'translateX(0)';
-  }
-  // Show the overlay
-  fullMenuOverlay.classList.remove('disappear');
-  fullMenuOverlay.classList.add('appear');
+  toggleHamMenuIcon();
+  addClassScrolled();
+  showRightAside();
+  showOverlay();
   // For small screens show the header navbar as expandable
   headerNav.style.transform = 'translateX(0)';
-  // Show the right part of the full menu
-  if (fullMenuRight) {
-    fullMenuRight.classList.remove('full-menu--collapse');
-    fullMenuRight.classList.add('full-menu--expand');
-  }
   // Remove pointer events for the rest of the document
   parallaxWrapper.style.pointerEvents = 'none';
   // Remove listener for scroll
@@ -160,37 +166,14 @@ function openMobileMenu(menuIndex = 0) {
 }
 
 function closeMobileMenu(menuIndex = 0) {
-  // Change the hamburger menu icon
-  hamMenu.classList.remove('header__ham-menu--close');
-  hamMenu.classList.add('header__ham-menu--open');
-  // Change the bg-color of header and aside
-  header.classList.remove('header--scrolled');
-  asideRight.classList.remove('aside--scrolled');
-  // For small screens hide the right aside
-  if (mediaQueryMax880.matches) {
-    asideRight.style.transform = 'translateX(100%)';
-  }
-  // Hhide the header navbar
+  toggleHamMenuIcon();
+  removeClassScrolled();
+  showRightAside();
+  hideCurrentLeftMenu();
+  hideAccessibilityMenu();
+  hideOverlay();
+  // Hide the header navbar
   headerNav.style.transform = 'translateX(calc(100% + var(--header-height)))';
-  // Hide the left part of the full menu
-  const openLeftMenu = document.querySelector(
-    '.full-menu--left.full-menu--expand'
-  );
-  if (openLeftMenu) {
-    openLeftMenu.classList.remove('full-menu--expand');
-    openLeftMenu.classList.add('full-menu--collapse');
-  }
-  // Hide the right part of the full menu
-  if (fullMenuRight) {
-    fullMenuRight.classList.remove('full-menu--expand');
-    fullMenuRight.classList.add('full-menu--collapse');
-  }
-  // Hide the accessibility menu
-  const accessibilityMenu = document.getElementById('accessibilityBar');
-  accessibilityMenu.classList.remove('active');
-  // Hide the overlay
-  fullMenuOverlay.classList.remove('appear');
-  fullMenuOverlay.classList.add('disappear');
   // Add pointer events for the rest of the document
   parallaxWrapper.style.pointerEvents = 'auto';
   // Add listener for scroll
@@ -198,41 +181,17 @@ function closeMobileMenu(menuIndex = 0) {
 }
 
 function openInternalMobileMenu(menuIndex = 0) {
+  addClassScrolled();
+  showRightAside();
+  hideCurrentLeftMenu();
+  showNewLeftMenu(menuIndex);
+  addLinkUnderline(menuIndex);
   // Change the hamburger menu icon
   hamMenu.classList.remove('header__ham-menu--open');
   hamMenu.classList.add('header__ham-menu--close');
-  // For small screens show the right aside
-  if (mediaQueryMax880.matches) {
-    asideRight.style.transform = 'translateX(0)';
-  }
   // Hide the main nav menu on small screens
   headerNav.style.transform = 'translateX(calc(100% + var(--header-height)))';
-  // Hide the current open left part of the full menu (if any)
-  const openLeftMenu = document.querySelector(
-    '.full-menu--left.full-menu--expand'
-  );
-  if (openLeftMenu) {
-    openLeftMenu.classList.remove('full-menu--expand');
-    openLeftMenu.classList.add('full-menu--collapse');
-  }
-  // Show the overlay
-  // fullMenuOverlay.classList.remove('disappear');
-  // fullMenuOverlay.classList.add('appear');
-  // Show the new left part of the full menu
-  fullMenusLeft[menuIndex].classList.remove('full-menu--collapse');
-  fullMenusLeft[menuIndex].classList.add('full-menu--expand');
-
-  // Show the right part of the full menu
-  if (fullMenuRight) {
-    fullMenuRight.classList.remove('full-menu--collapse');
-    fullMenuRight.classList.add('full-menu--expand');
-  }
-  // Add an underline on the current active link, after removing the previous one (if any)
-  const previousActiveLink = document.querySelector('.current');
-  if (previousActiveLink) {
-    previousActiveLink.classList.remove('current');
-  }
-  expandLinks[menuIndex].classList.add('current');
+  // Remove pointer events for the rest of the document
   parallaxWrapper.style.pointerEvents = 'none';
 }
 
@@ -248,7 +207,7 @@ if (hamMenu) {
       openDesktopMenu();
     } else if (
       mediaQueryMin1040.matches &&
-      !hamMenu.classList.contains('header__ham-menu--open')
+      hamMenu.classList.contains('header__ham-menu--close')
     ) {
       closeDesktopMenu();
       // Small screens
@@ -259,7 +218,7 @@ if (hamMenu) {
       openMobileMenu();
     } else if (
       mediaQueryMax1040.matches &&
-      !hamMenu.classList.contains('header__ham-menu--open')
+      hamMenu.classList.contains('header__ham-menu--close')
     ) {
       closeMobileMenu();
     }
@@ -274,6 +233,8 @@ if (expandLinks.length > 0) {
       // Large screens
       if (mediaQueryMin1040.matches) {
         openDesktopMenu(index);
+        hamMenu.classList.remove('header__ham-menu--open');
+        hamMenu.classList.add('header__ham-menu--close');
         // Small screens
       } else if (mediaQueryMax1040.matches) {
         openInternalMobileMenu(index);
@@ -287,9 +248,7 @@ document.addEventListener('click', (e) => {
   const openMenuLeft = document.querySelector(
     '.full-menu--left.full-menu--expand'
   );
-  // const openMenuRight = document.querySelector(
-  //   '.full-menu--right.full-menu--expand'
-  // );
+
   // Large screens
   if (
     mediaQueryMin1040.matches &&
@@ -297,6 +256,7 @@ document.addEventListener('click', (e) => {
     !openMenuLeft.contains(e.target)
   ) {
     closeDesktopMenu();
+
     // Small screens
   } else if (
     mediaQueryMax1040.matches &&
@@ -311,6 +271,8 @@ document.addEventListener('click', (e) => {
     !headerNav.contains(e.target)
   ) {
     closeMobileMenu();
+    hamMenu.classList.remove('header__ham-menu--close');
+    hamMenu.classList.add('header__ham-menu--open');
   }
 });
 
