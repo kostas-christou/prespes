@@ -10,8 +10,10 @@ const fullMenuBackButtons = document.querySelectorAll('.full-menu__back-btn');
 const parallaxWrapper = document.querySelector('.parallax-wrapper');
 const backToTop = document.querySelector('.back-to-top');
 const mediaQueryMax880 = window.matchMedia('(max-width: 54.99em)');
-const mediaQueryMax1366 = window.matchMedia('(max-width: 85.374em)');
-const mediaQueryMin1366 = window.matchMedia('(min-width: 85.375em)');
+const mediaQueryMax1040 = window.matchMedia('(max-width: 64.99em)');
+const mediaQueryMin1040 = window.matchMedia('(min-width: 65em)');
+// const mediaQueryMax1366 = window.matchMedia('(max-width: 85.374em)');
+// const mediaQueryMin1366 = window.matchMedia('(min-width: 85.375em)');
 const weatherTemp = document.querySelector('.header__weather-temp');
 const weatherIcon = document.querySelector('.header__weather-icon');
 const accessBtn = document.getElementById('universalAccessBtn');
@@ -88,6 +90,8 @@ function openDesktopMenu(menuIndex = 0) {
     previousActiveLink.classList.remove('current');
   }
   expandLinks[menuIndex].classList.add('current');
+  // Remove listener for scroll
+  window.removeEventListener('scroll', changeHeaderAndAside);
 }
 
 function closeDesktopMenu(menuIndex = 0) {
@@ -124,19 +128,24 @@ function closeDesktopMenu(menuIndex = 0) {
   }
   // Add pointer events for the rest of the document
   parallaxWrapper.style.pointerEvents = 'auto';
+  // Add listener for scroll
+  window.addEventListener('scroll', changeHeaderAndAside);
 }
 
 function openMobileMenu(menuIndex = 0) {
   // Change the hamburger menu icon
   hamMenu.classList.remove('header__ham-menu--open');
   hamMenu.classList.add('header__ham-menu--close');
+  // Change the bg-color of header and aside
+  header.classList.add('header--scrolled');
+  asideRight.classList.add('aside--scrolled');
   // For small screens show the right aside
   if (mediaQueryMax880.matches) {
     asideRight.style.transform = 'translateX(0)';
   }
   // Show the overlay
-  // fullMenuOverlay.classList.remove('disappear');
-  // fullMenuOverlay.classList.add('appear');
+  fullMenuOverlay.classList.remove('disappear');
+  fullMenuOverlay.classList.add('appear');
   // For small screens show the header navbar as expandable
   headerNav.style.transform = 'translateX(0)';
   // Show the right part of the full menu
@@ -146,12 +155,17 @@ function openMobileMenu(menuIndex = 0) {
   }
   // Remove pointer events for the rest of the document
   parallaxWrapper.style.pointerEvents = 'none';
+  // Remove listener for scroll
+  window.removeEventListener('scroll', changeHeaderAndAside);
 }
 
 function closeMobileMenu(menuIndex = 0) {
   // Change the hamburger menu icon
   hamMenu.classList.remove('header__ham-menu--close');
   hamMenu.classList.add('header__ham-menu--open');
+  // Change the bg-color of header and aside
+  header.classList.remove('header--scrolled');
+  asideRight.classList.remove('aside--scrolled');
   // For small screens hide the right aside
   if (mediaQueryMax880.matches) {
     asideRight.style.transform = 'translateX(100%)';
@@ -175,10 +189,12 @@ function closeMobileMenu(menuIndex = 0) {
   const accessibilityMenu = document.getElementById('accessibilityBar');
   accessibilityMenu.classList.remove('active');
   // Hide the overlay
-  // fullMenuOverlay.classList.remove('appear');
-  // fullMenuOverlay.classList.add('disappear');
+  fullMenuOverlay.classList.remove('appear');
+  fullMenuOverlay.classList.add('disappear');
   // Add pointer events for the rest of the document
   parallaxWrapper.style.pointerEvents = 'auto';
+  // Add listener for scroll
+  window.addEventListener('scroll', changeHeaderAndAside);
 }
 
 function openInternalMobileMenu(menuIndex = 0) {
@@ -226,23 +242,23 @@ if (hamMenu) {
     e.stopPropagation();
     // Large screens
     if (
-      mediaQueryMin1366.matches &&
+      mediaQueryMin1040.matches &&
       hamMenu.classList.contains('header__ham-menu--open')
     ) {
       openDesktopMenu();
     } else if (
-      mediaQueryMin1366.matches &&
+      mediaQueryMin1040.matches &&
       !hamMenu.classList.contains('header__ham-menu--open')
     ) {
       closeDesktopMenu();
       // Small screens
     } else if (
-      mediaQueryMax1366.matches &&
+      mediaQueryMax1040.matches &&
       hamMenu.classList.contains('header__ham-menu--open')
     ) {
       openMobileMenu();
     } else if (
-      mediaQueryMax1366.matches &&
+      mediaQueryMax1040.matches &&
       !hamMenu.classList.contains('header__ham-menu--open')
     ) {
       closeMobileMenu();
@@ -256,10 +272,10 @@ if (expandLinks.length > 0) {
     expandLink.addEventListener('click', (e) => {
       e.stopPropagation();
       // Large screens
-      if (mediaQueryMin1366.matches) {
+      if (mediaQueryMin1040.matches) {
         openDesktopMenu(index);
         // Small screens
-      } else if (mediaQueryMax1366.matches) {
+      } else if (mediaQueryMax1040.matches) {
         openInternalMobileMenu(index);
       }
     });
@@ -271,33 +287,27 @@ document.addEventListener('click', (e) => {
   const openMenuLeft = document.querySelector(
     '.full-menu--left.full-menu--expand'
   );
-  const openMenuRight = document.querySelector(
-    '.full-menu--right.full-menu--expand'
-  );
+  // const openMenuRight = document.querySelector(
+  //   '.full-menu--right.full-menu--expand'
+  // );
   // Large screens
   if (
-    mediaQueryMin1366.matches &&
+    mediaQueryMin1040.matches &&
     openMenuLeft &&
-    openMenuRight &&
-    !openMenuLeft.contains(e.target) &&
-    !openMenuRight.contains(e.target)
+    !openMenuLeft.contains(e.target)
   ) {
     closeDesktopMenu();
     // Small screens
   } else if (
-    mediaQueryMax1366.matches &&
+    mediaQueryMax1040.matches &&
     openMenuLeft &&
-    openMenuRight &&
-    !openMenuLeft.contains(e.target) &&
-    !openMenuRight.contains(e.target)
+    !openMenuLeft.contains(e.target)
   ) {
     closeMobileMenu();
   } else if (
-    mediaQueryMax1366.matches &&
+    mediaQueryMax1040.matches &&
     !openMenuLeft &&
-    openMenuRight &&
     headerNav &&
-    !openMenuRight.contains(e.target) &&
     !headerNav.contains(e.target)
   ) {
     closeMobileMenu();
