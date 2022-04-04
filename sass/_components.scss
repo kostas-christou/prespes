@@ -636,16 +636,17 @@
 
   &__icon {
     position: absolute;
-    top: 2rem;
-    left: 2rem;
+    top: 5%;
+    left: 5%;
+    width: 10%;
 
     z-index: 10;
   }
 
   &__text {
     position: absolute;
-    top: 2rem;
-    left: 5rem;
+    top: 5%;
+    left: 20%;
 
     color: var(--color-white);
     font-size: clamp(1rem, 0.93rem + 0.32vw, 1.25rem);
@@ -667,7 +668,7 @@
   }
 }
 
-/* Media quries for follow-us-card */
+/* Media queries for follow-us-card */
 @media screen and (hover: hover) {
   .follow-card {
     &__text {

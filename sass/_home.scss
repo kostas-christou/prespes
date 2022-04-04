@@ -1033,6 +1033,7 @@
   gap: var(--section-gap-internal);
 
   padding-top: var(--padding-section);
+  position: relative;
 
   &__title {
   }
@@ -1043,6 +1044,17 @@
   &__slider {
     width: 100%;
     margin-bottom: 1.5rem;
+  }
+}
+
+/* Media queries for news section */
+@media screen and (min-width: 65em) {
+  .news {
+    &__btn-box {
+      position: absolute;
+      top: var(--padding-section);
+      right: var(--header-height);
+    }
   }
 }
 /* News section styling end */
@@ -1064,6 +1076,8 @@
   padding-top: var(--padding-section);
   padding-bottom: var(--padding-section);
 
+  position: relative;
+
   &__title {
   }
 
@@ -1075,6 +1089,17 @@
     margin-bottom: 1.5rem;
   }
 }
+
+/* Media queries for events section */
+@media screen and (min-width: 65em) {
+  .events {
+    &__btn-box {
+      position: absolute;
+      top: var(--padding-section);
+      right: var(--header-height);
+    }
+  }
+}
 /* Events section styling start */
 
 /* Newsletter section styling start */
@@ -1082,6 +1107,11 @@
   padding-block: calc(var(--padding-section) / 2);
   padding-inline: 10vw;
   background-color: var(--color-tertiary);
+
+  &__content-wrapper {
+    width: fit-content;
+    margin: 0 auto;
+  }
 
   &__title {
     margin-bottom: 2rem;
@@ -1101,12 +1131,13 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 
   &__input {
     padding: 0.25em 0.75em;
     border: 0;
+    width: clamp(10rem, 48%, 30rem);
 
     &:focus-within {
       outline: 2px solid var(--color-primary);
@@ -1114,7 +1145,7 @@
   }
 
   &__policy {
-    max-width: 65ch;
+    max-width: 90ch;
     font-size: clamp(0.75rem, 0.7099rem + 0.1887vw, 0.875rem);
   }
 
@@ -1132,6 +1163,21 @@
     &:hover {
       background-color: var(--color-secondary);
       color: var(--color-primary);
+    }
+  }
+}
+
+/* Media quries for newsletter section */
+@media screen and (min-width: 65em) {
+  .newsletter {
+    &__input-wrapper {
+      justify-content: space-between;
+      gap: 4%;
+      width: 100%;
+    }
+
+    &__btn {
+      align-self: flex-start;
     }
   }
 }
@@ -1190,11 +1236,55 @@
 }
 
 /* Media queries for follow-us section */
-@media screen and (min-width: 50em) {
+@media screen and (min-width: 30em) {
   .follow {
     &__content-box {
       display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
     }
+  }
+}
+
+@media screen and (min-width: 65em) {
+  .follow {
+    &__content-box {
+      display: grid;
+
+      grid-template-columns: repeat(13, 1fr);
+    }
+  }
+
+  .follow-card--1 {
+    grid-column: 2 / 5;
+  }
+
+  .follow-card--2 {
+    grid-column: 5 / 8;
+  }
+
+  .follow-card--3 {
+    grid-column: 8 / 11;
+  }
+
+  .follow-card--4 {
+    grid-column: 11 / -1;
+  }
+
+  .follow-card--5 {
+    grid-column: 1 / 4;
+  }
+
+  .follow-card--6 {
+    grid-column: 4 / 7;
+  }
+
+  .follow-card--7 {
+    grid-column: 7 / 10;
+  }
+
+  .follow-card--8 {
+    grid-column: 10 / 13;
   }
 }
 /* Follow-us section styling end */
@@ -1212,7 +1302,7 @@
 
 .parallax-footer {
   width: 100%;
-  height: var(--footer-height);
+  height: 40vh;
   background-color: var(--color-primary);
   pointer-events: none;
   position: relative;
@@ -1222,7 +1312,7 @@
 /* Footer styling start */
 .footer {
   // min-height: calc(100vh - var(--header-height));
-  padding-block: var(--header-height);
+  padding-block: var(--header-height) 2rem;
   padding-inline: 8vw;
   background-color: var(--color-primary);
 
@@ -1343,10 +1433,10 @@
     left: 0;
 
     width: 100%;
-    height: var(--footer-height);
+    height: 40vh;
 
     background-image: url('../assets/images/footer_image.jpg');
-    background-size: contain;
+    background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -1400,7 +1490,7 @@
     // bottom: 0;
     // left: var(--header-height);
     // right: var(--header-height);
-    // min-height: var(--footer-height);
+    min-height: var(--footer-height);
     // padding: 8vh 3rem 4vh;
 
     &__content {
