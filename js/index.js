@@ -54,8 +54,10 @@ function hideCurrentLeftMenu() {
 }
 // Function for showing the new left menu
 function showNewLeftMenu(menuIndex) {
-  fullMenusLeft[menuIndex].classList.remove('full-menu--collapse');
-  fullMenusLeft[menuIndex].classList.add('full-menu--expand');
+  if (fullMenusLeft[menuIndex]) {
+    fullMenusLeft[menuIndex].classList.remove('full-menu--collapse');
+    fullMenusLeft[menuIndex].classList.add('full-menu--expand');
+  }
 }
 
 // Function for showing the overlay
@@ -77,24 +79,26 @@ function addLinkUnderline(menuIndex) {
   expandLinks[menuIndex].classList.add('current');
 }
 
+// Function for removing the underline on the current active link (if any)
 function removeLinkUnderline() {
   const previousActiveLink = document.querySelector('.current');
   if (previousActiveLink) {
     previousActiveLink.classList.remove('current');
   }
 }
-
+// Function for hiding the accessibility menu
 function hideAccessibilityMenu() {
   const accessibilityMenu = document.getElementById('accessibilityBar');
   accessibilityMenu.classList.remove('active');
 }
 
+// Function for showing the right aside on small screens
 function showRightAside() {
   if (mediaQueryMax880.matches) {
     asideRight.style.transform = 'translateX(0)';
   }
 }
-
+// Function for hiding the right aside on small screens
 function hideRightAside() {
   if (mediaQueryMax880.matches) {
     asideRight.style.transform = 'translateX(100%)';
@@ -102,13 +106,15 @@ function hideRightAside() {
 }
 
 // Cookies buttons functionality
-acceptBtn.addEventListener('click', () => {
-  cookies.style.display = 'none';
-});
+if (acceptBtn && refuseBtn) {
+  acceptBtn.addEventListener('click', () => {
+    cookies.style.display = 'none';
+  });
 
-refuseBtn.addEventListener('click', () => {
-  cookies.style.display = 'none';
-});
+  refuseBtn.addEventListener('click', () => {
+    cookies.style.display = 'none';
+  });
+}
 
 // Fetch weather info from external API (weatherapi.com)
 document.addEventListener('DOMContentLoaded', async () => {
@@ -120,6 +126,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   weatherTemp.innerHTML = `${response.data.current.temp_c} <sup>o</sup>C`;
 });
 
+// Change the bg-color of header and right aside, when opening the accessibility widget
 accessBtn.addEventListener('click', () => {
   const accessBar = document.getElementById('accessibilityBar');
 
@@ -345,28 +352,6 @@ function showVideo(e) {
   videoOverlay.style.display = 'none';
 }
 
-// Calendar initialization
-// if (document.getElementById('color-calendar')) {
-//   new Calendar({
-//     id: '#color-calendar',
-//     calendarSize: 'small',
-//   });
-// }
-
-//// Playing with calendar
-// const calendarBody = document.querySelector('.calendar__body');
-// calendarBody.addEventListener('click', (e) => {
-//   const calendarDay = document.querySelector('.calendar__day-selected');
-//   const calendarHeader =
-//     calendarDay.parentElement.parentElement.previousElementSibling;
-//   const calendarMonth = calendarHeader.querySelector('.calendar__month');
-//   const calendarYear = calendarHeader.querySelector('.calendar__year');
-//   let day = calendarDay.firstElementChild.textContent;
-//   let month = calendarMonth.textContent;
-//   let year = calendarYear.textContent;
-//   console.log(`See all events on ${day}/${month}/${year}`);
-// });
-
 // Swiper (slider) config
 const newsSwiper = new Swiper('.news__swiper', {
   slidesPerView: 1.2,
@@ -378,15 +363,15 @@ const newsSwiper = new Swiper('.news__swiper', {
       spaceBetween: 30,
     },
     1050: {
-      slidesPerView: 2.5,
+      slidesPerView: 2.4,
       spaceBetween: 40,
     },
     1550: {
-      slidesPerView: 3.5,
+      slidesPerView: 3.4,
       spaceBetween: 60,
     },
-    2050: {
-      slidesPerView: 3.5,
+    2000: {
+      slidesPerView: 4.4,
       spaceBetween: 60,
     },
   },
@@ -407,14 +392,14 @@ const eventsSwiper = new Swiper('.events__swiper', {
     },
     1050: {
       slidesPerView: 2.4,
-      spaceBetween: 30,
+      spaceBetween: 40,
     },
     1550: {
       slidesPerView: 3.4,
       spaceBetween: 50,
     },
-    2050: {
-      slidesPerView: 3.5,
+    2000: {
+      slidesPerView: 4.4,
       spaceBetween: 60,
     },
   },
@@ -423,27 +408,3 @@ const eventsSwiper = new Swiper('.events__swiper', {
     prevEl: '.events__swiper-button-prev',
   },
 });
-
-// const civilProtectionSwiper = new Swiper('.civil-protection__swiper', {
-//   slidesPerView: 1,
-//   spaceBetween: 20,
-//   grabCursor: true,
-//   breakpoints: {
-//     1040: {
-//       slidesPerView: 1.5,
-//       spaceBetween: 20,
-//     },
-//     1350: {
-//       slidesPerView: 2.5,
-//       spaceBetween: 30,
-//     },
-//     1850: {
-//       slidesPerView: 3.5,
-//       spaceBetween: 50,
-//     },
-//   },
-//   navigation: {
-//     nextEl: '.civil-protection__swiper-button-next',
-//     prevEl: '.civil-protection__swiper-button-prev',
-//   },
-// });
