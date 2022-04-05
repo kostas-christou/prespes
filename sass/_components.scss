@@ -1,7 +1,6 @@
 /* Components start */
 
 /* Buttons start */
-
 /* Arrow-button start */
 .arrow-btn {
   padding-block: 0.5em;
@@ -52,117 +51,6 @@
 
 /* Buttons end */
 
-// /* Section-title container start */
-
-// .intro {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   gap: 1.5rem;
-
-//   width: 95%;
-//   margin: 7rem auto 3rem;
-
-//   position: relative;
-
-//   &__title {
-//     flex-basis: max-content;
-
-//     margin-left: 2rem;
-
-//     position: relative;
-//     z-index: 20;
-//   }
-
-//   &__start-dec {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     transform: translateY(-30%);
-
-//     height: clamp(4rem, 3.5556rem + 1.7778vw, 5rem);
-//     // height: 5rem;
-//     aspect-ratio: 1;
-
-//     background-image: url('../assets/icons/separator_icon_1.svg');
-//     background-size: contain;
-//     object-position: center;
-//     background-repeat: no-repeat;
-
-//     z-index: 10;
-//   }
-
-//   &__end-dec {
-//     flex-shrink: 1;
-//     flex-grow: 1;
-
-//     transform: translateY(-4px);
-
-//     display: flex;
-//     align-items: center;
-//     justify-content: flex-start;
-
-//     position: relative;
-//     z-index: 20;
-//   }
-
-//   &__line {
-//     height: 2px;
-//     width: 100%;
-
-//     background-color: var(--color-grey-light);
-//   }
-
-//   &__circle {
-//     border: 2px solid var(--color-grey-light);
-
-//     &--empty {
-//       width: 0.75em;
-//       height: 0.75em;
-//       border-radius: 50%;
-//     }
-
-//     &--content {
-//       flex-shrink: 0;
-
-//       border-radius: 100vh;
-//       background-color: var(--color-grey-light);
-//       transition: background-color 0.25s ease-in-out,
-//         border-color 0.25s ease-in-out;
-
-//       &:hover {
-//         background-color: var(--color-secondary-light);
-//         border-color: var(--color-secondary-light);
-//       }
-
-//       & a {
-//         font-size: clamp(0.75rem, 0.715rem + 0.16vw, 0.875rem);
-//         padding: 0.5em 1em;
-//       }
-//     }
-//   }
-// }
-
-// /* Media queries for section intro */
-// @media screen and (min-width: 40em) {
-//   .intro {
-//     flex-direction: row;
-//     align-items: baseline;
-//     gap: 2rem;
-
-//     width: 90%;
-//     // margin: 4rem auto;
-//   }
-// }
-
-// @media screen and (min-width: 40em) {
-//   .intro {
-//     margin: 10rem auto 5rem;
-//   }
-// }
-
-// /* Section-title container end */
-
 /* Sightseeing-card start */
 .sightseeing-card {
   display: flex;
@@ -173,12 +61,8 @@
   width: 100%;
   height: 100%;
 
-  padding: clamp(1rem, 0.0769rem + 4.1026vw, 5rem);
+  padding: clamp(1rem, 0.8rem + 1vw, 2rem);
   overflow: hidden;
-  // background-image: url('../assets/images/agios_achillios.jpg');
-  // background-size: cover;
-  // background-position: center;
-  // background-repeat: no-repeat;
 
   position: relative;
 
@@ -245,19 +129,6 @@
       background-color: var(--color-primary);
     }
   }
-
-  //   &--secondary {
-  //     @extend .sightseeing-card;
-  //     & .sightseeing-card__title,
-  //     & .sightseeing-card__text,
-  //     & .sightseeing-card__link {
-  //       color: var(--color-primary);
-  //     }
-
-  //     & .sightseeing-card__overlay {
-  //       background-color: var(--color-secondary-light);
-  //     }
-  //   }
 }
 
 @media screen and (hover: hover) {
@@ -276,7 +147,7 @@
 
     &:hover {
       & .sightseeing-card__img {
-        transform: scale(1.15);
+        transform: scale(1.1);
       }
 
       & .sightseeing-card__title {
@@ -303,7 +174,6 @@
     }
   }
 }
-
 /* Sightseeing-card end */
 
 /* Experience-card start */
@@ -315,9 +185,8 @@
   gap: 2rem;
 
   width: 100%;
-  // aspect-ratio: 3 / 2;
   min-height: 23rem;
-  padding: 3rem 1rem;
+  padding: clamp(1rem, 0.8rem + 1vw, 2rem);
 
   background-size: cover;
   background-position: center;
@@ -438,17 +307,6 @@
     }
   }
 
-  // &__date {
-  //   position: absolute;
-  //   bottom: 0;
-  //   left: 0;
-
-  //   padding: 0.5rem;
-  //   background-color: var(--color-white);
-
-  //   z-index: 20;s
-  // }
-
   &__title {
     margin-bottom: 2rem;
   }
@@ -487,8 +345,6 @@
 
 /* Events-card start */
 .events-card {
-  // width: fit-content;
-
   &__img {
     width: 90%;
     margin-left: auto;
@@ -504,15 +360,12 @@
     background-color: var(--color-tertiary-light);
     margin-right: auto;
     margin-top: -3rem;
-    // transform: translateY(-20%);
 
     position: relative;
     z-index: 10;
-    // transition: background-color 0.25s ease-in-out, transform 0.5s ease-in-out;
     transition: background-color 0.25s ease-in-out, margin-top 0.5s ease-in-out;
 
     &:hover {
-      // transform: translateY(-30%);
       margin-top: -5rem;
       background-color: var(--color-secondary);
 
@@ -530,7 +383,6 @@
   }
 
   &__title {
-    // font-size: clamp(1rem, 0.86rem + 0.64vw, 1.5rem);
     font-size: clamp(1rem, 0.93rem + 0.32vw, 1.25rem);
     font-weight: 700;
   }
@@ -566,8 +418,6 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
-
-  // width: fit-content;
 
   &__icon-box {
     display: flex;

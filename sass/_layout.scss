@@ -17,11 +17,6 @@
 
   transition: transform 0.5s ease-in-out;
 
-  //   &--left {
-  //     @extend .aside;
-  //     display: none;
-  //   }
-
   &--right {
     @extend .aside;
     right: 0;
@@ -50,22 +45,9 @@
 /* Media queries for layouts */
 @media screen and (min-width: 55em) {
   .parallax-wrapper {
-    // height: 100%;
-    // width: calc(100% - var(--header-height));
-
-    // overflow-x: hidden;
-    // overflow-y: auto;
-
-    // margin-right: auto;
   }
 
   .aside {
-    // &--left {
-    //   display: block;
-    //   left: 0;
-    //   z-index: 80;
-    // }
-
     &--right {
       transform: translateX(0);
     }
