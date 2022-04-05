@@ -15,6 +15,9 @@ const mediaQueryMin1040 = window.matchMedia('(min-width: 65em)');
 const weatherTemp = document.querySelector('.header__weather-temp');
 const weatherIcon = document.querySelector('.header__weather-icon');
 const accessBtn = document.getElementById('universalAccessBtn');
+const cookies = document.querySelector('.cookies');
+const refuseBtn = document.querySelector('.cookies__btn--refuse');
+const acceptBtn = document.querySelector('.cookies__btn--accept');
 
 // Helper fuctions for reusability
 // Change header bg-color depending on the accessibility widget state
@@ -92,6 +95,21 @@ function showRightAside() {
   }
 }
 
+function hideRightAside() {
+  if (mediaQueryMax880.matches) {
+    asideRight.style.transform = 'translateX(100%)';
+  }
+}
+
+// Cookies buttons functionality
+acceptBtn.addEventListener('click', () => {
+  cookies.style.display = 'none';
+});
+
+refuseBtn.addEventListener('click', () => {
+  cookies.style.display = 'none';
+});
+
 // Fetch weather info from external API (weatherapi.com)
 document.addEventListener('DOMContentLoaded', async () => {
   const response = await axios.get(
@@ -168,7 +186,7 @@ function openMobileMenu(menuIndex = 0) {
 function closeMobileMenu(menuIndex = 0) {
   toggleHamMenuIcon();
   removeClassScrolled();
-  showRightAside();
+  hideRightAside();
   hideCurrentLeftMenu();
   hideAccessibilityMenu();
   hideOverlay();
@@ -351,7 +369,7 @@ function showVideo(e) {
 
 // Swiper (slider) config
 const newsSwiper = new Swiper('.news__swiper', {
-  slidesPerView: 1,
+  slidesPerView: 1.2,
   spaceBetween: 20,
   grabCursor: true,
   breakpoints: {
@@ -379,7 +397,7 @@ const newsSwiper = new Swiper('.news__swiper', {
 });
 
 const eventsSwiper = new Swiper('.events__swiper', {
-  slidesPerView: 1,
+  slidesPerView: 1.2,
   spaceBetween: 20,
   grabCursor: true,
   breakpoints: {

@@ -18,15 +18,16 @@
   --ff-dancing: "Dancing Script", cursive;
   --ff-roboto: "Roboto", sans-serif;
   --ff-roboto-slab: "Roboto Slab", serif;
-  --fira-sans: "Fira Sans", sans-serif;
+  --ff-fira-sans: "Fira Sans", sans-serif;
   /* Padding CSS variables*/
   /* Other variables */
   --padding-section: clamp(4rem, 2.6154rem + 6.1538vw, 10rem);
+  --padding-small: clamp(1rem, 0.4rem + 3vw, 4rem);
   --section-gap-internal: clamp(2rem, 1.3077rem + 3.0769vw, 5rem);
   --flex-gap-small: clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
   --margin-normal: clamp(2rem, 1.3077rem + 3.0769vw, 5rem);
   /* Elements height variables */
-  --header-height: clamp(3.5rem, 3.1rem + 2vw, 5.5rem);
+  --header-height: clamp(3.5rem, 3.2rem + 1.5vw, 5rem);
   --footer-height: calc(60vh - var(--header-height));
   /* Breakpoints for media queries */
   /*
@@ -92,7 +93,7 @@ h6 {
 }
 
 h1 {
-  font-family: var(--fira-sans);
+  font-family: var(--ff-fira-sans);
   font-size: clamp(2rem, 1.0649rem + 4.1558vw, 6rem);
   font-weight: 900;
   line-height: 0.9;
@@ -301,11 +302,17 @@ input {
   width: 100%;
   height: 100%;
   padding: clamp(1rem, 0.0769rem + 4.1026vw, 5rem);
-  background-image: url("../assets/images/agios_achillios.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
   position: relative;
+}
+.sightseeing-card__img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+  transition: transform 0.5s ease-in-out;
 }
 .sightseeing-card__content-box {
   overflow: hidden;
@@ -333,7 +340,7 @@ input {
 .sightseeing-card__overlay {
   position: absolute;
   inset: 0;
-  opacity: 0.5;
+  opacity: 0.3;
   z-index: 10;
   transition: opacity 0.5s ease-in-out;
 }
@@ -357,8 +364,8 @@ input {
   .sightseeing-card__text {
     animation: textSlideOut 0.5s ease forwards;
   }
-  .sightseeing-card:hover, .sightseeing-card--primary:hover {
-    background-size: 130%;
+  .sightseeing-card:hover .sightseeing-card__img, .sightseeing-card--primary:hover .sightseeing-card__img {
+    transform: scale(1.15);
   }
   .sightseeing-card:hover .sightseeing-card__title, .sightseeing-card--primary:hover .sightseeing-card__title {
     animation: titleSlideIn 0.75s ease forwards;
@@ -471,7 +478,7 @@ input {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 1s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 .news-card__title {
   margin-bottom: 2rem;
@@ -698,6 +705,12 @@ input {
   height: 100%;
 }
 
+/* Media queries for video */
+@media screen and (min-width: 120em) {
+  .video__text {
+    max-width: 100ch;
+  }
+}
 /* Video end */
 /* Swiper slider buttons start */
 .slider-btn-box {
@@ -718,17 +731,17 @@ input {
   cursor: pointer;
   transition: background-color 0.25s ease-in-out;
 }
+.slider-btn-next:hover,
+.slider-btn-prev:hover {
+  background-color: var(--color-secondary);
+}
 .slider-btn-next.swiper-button-disabled path,
 .slider-btn-prev.swiper-button-disabled path {
   fill: var(--color-grey-light);
 }
-.slider-btn-next.swiper-button-disabled path:hover,
-.slider-btn-prev.swiper-button-disabled path:hover {
+.slider-btn-next.swiper-button-disabled:hover,
+.slider-btn-prev.swiper-button-disabled:hover {
   background-color: transparent;
-}
-.slider-btn-next:hover,
-.slider-btn-prev:hover {
-  background-color: var(--color-secondary);
 }
 
 .slider-btn-prev svg {
@@ -1336,6 +1349,7 @@ body.contrast * {
 }
 .aside__list-item svg {
   width: clamp(1.35rem, 1.0847rem + 1.0612vw, 2rem);
+  transition: all 0.25s ease-in-out;
 }
 .aside__list-item path {
   fill: var(--color-white);
@@ -1379,6 +1393,52 @@ body.contrast * {
 }
 
 /* Aside nav right styling end */
+/* Cookies notice styling start */
+.cookies {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: min(100%, 50rem);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 1.2rem + 1.5vw, 3rem) clamp(1.5rem, 0.8rem + 3.5vw, 5rem);
+  background-color: var(--color-tertiary-dark);
+  z-index: 999;
+}
+.cookies__title {
+  margin-bottom: 1.25em;
+  font-family: var(--ff-fira-sans);
+  font-size: clamp(1.5rem, 1.4rem + 0.5vw, 2rem);
+  text-align: left;
+}
+.cookies__text {
+  margin-bottom: 2em;
+  font-family: var(--ff-fira-sans);
+  font-size: clamp(0.875rem, 0.8205rem + 0.2564vw, 1.125rem);
+  font-weight: 700;
+}
+.cookies__btn, .cookies__btn--refuse, .cookies__btn--accept {
+  display: inline-block;
+  padding: 0.75em 3em;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.cookies__btn:hover, .cookies__btn--refuse:hover, .cookies__btn--accept:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.cookies__btn--accept {
+  background-color: var(--color-secondary);
+  margin-bottom: 1rem;
+  margin-right: 2rem;
+}
+.cookies__btn--refuse {
+  background-color: var(--color-white);
+}
+
+/* Cookies notice styling end */
 /* Hero section styling start */
 .hero {
   display: flex;
@@ -1532,7 +1592,7 @@ body.contrast * {
   .news__btn-box {
     position: absolute;
     top: var(--padding-section);
-    right: var(--header-height);
+    right: 5%;
   }
 }
 /* News section styling end */
@@ -1594,11 +1654,12 @@ body.contrast * {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  width: 100%;
 }
 .newsletter__input {
-  padding: 0.25em 0.75em;
+  padding: 0.5em 0.75em;
   border: 0;
-  width: clamp(10rem, 48%, 30rem);
+  width: clamp(15rem, 48%, 30rem);
 }
 .newsletter__input:focus-within {
   outline: 2px solid var(--color-primary);

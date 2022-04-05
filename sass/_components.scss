@@ -174,13 +174,24 @@
   height: 100%;
 
   padding: clamp(1rem, 0.0769rem + 4.1026vw, 5rem);
-
-  background-image: url('../assets/images/agios_achillios.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
+  // background-image: url('../assets/images/agios_achillios.jpg');
+  // background-size: cover;
+  // background-position: center;
+  // background-repeat: no-repeat;
 
   position: relative;
+
+  &__img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+
+    transition: transform 0.5s ease-in-out;
+  }
 
   &__content-box {
     overflow: hidden;
@@ -216,7 +227,7 @@
     position: absolute;
     inset: 0;
 
-    opacity: 0.5;
+    opacity: 0.3;
     z-index: 10;
     transition: opacity 0.5s ease-in-out;
   }
@@ -264,7 +275,9 @@
     }
 
     &:hover {
-      background-size: 130%;
+      & .sightseeing-card__img {
+        transform: scale(1.15);
+      }
 
       & .sightseeing-card__title {
         animation: titleSlideIn 0.75s ease forwards;
@@ -421,7 +434,7 @@
       object-fit: cover;
       object-position: center;
 
-      transition: transform 1s ease-in-out;
+      transition: transform 0.5s ease-in-out;
     }
   }
 
@@ -751,6 +764,15 @@
     height: 100%;
   }
 }
+
+/* Media queries for video */
+@media screen and (min-width: 120em) {
+  .video {
+    &__text {
+      max-width: 100ch;
+    }
+  }
+}
 /* Video end */
 
 /* Swiper slider buttons start */
@@ -773,16 +795,18 @@
   cursor: pointer;
   transition: background-color 0.25s ease-in-out;
 
-  &.swiper-button-disabled path {
-    fill: var(--color-grey-light);
+  &:hover {
+    background-color: var(--color-secondary);
+  }
+
+  &.swiper-button-disabled {
+    & path {
+      fill: var(--color-grey-light);
+    }
 
     &:hover {
       background-color: transparent;
     }
-  }
-
-  &:hover {
-    background-color: var(--color-secondary);
   }
 }
 

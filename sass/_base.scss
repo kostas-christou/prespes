@@ -19,7 +19,7 @@
   --ff-dancing: 'Dancing Script', cursive;
   --ff-roboto: 'Roboto', sans-serif;
   --ff-roboto-slab: 'Roboto Slab', serif;
-  --fira-sans: 'Fira Sans', sans-serif;
+  --ff-fira-sans: 'Fira Sans', sans-serif;
 
   /* Padding CSS variables*/
   // --pad-inline-small: 4%;
@@ -33,12 +33,13 @@
 
   /* Other variables */
   --padding-section: clamp(4rem, 2.6154rem + 6.1538vw, 10rem);
+  --padding-small: clamp(1rem, 0.4rem + 3vw, 4rem);
   --section-gap-internal: clamp(2rem, 1.3077rem + 3.0769vw, 5rem);
   --flex-gap-small: clamp(1rem, 0.7692rem + 1.0256vw, 2rem);
   --margin-normal: clamp(2rem, 1.3077rem + 3.0769vw, 5rem);
 
   /* Elements height variables */
-  --header-height: clamp(3.5rem, 3.1rem + 2vw, 5.5rem);
+  --header-height: clamp(3.5rem, 3.2rem + 1.5vw, 5rem);
 
   --footer-height: calc(60vh - var(--header-height));
 
@@ -116,7 +117,7 @@ h6 {
 }
 
 h1 {
-  font-family: var(--fira-sans);
+  font-family: var(--ff-fira-sans);
   font-size: clamp(2rem, 1.0649rem + 4.1558vw, 6rem);
   font-weight: 900;
   line-height: 0.9;
