@@ -27,7 +27,9 @@ function addClassScrolled() {
 }
 
 function removeClassScrolled() {
-  header.classList.remove('header--scrolled');
+  if (window.scrollY < 150) {
+    header.classList.remove('header--scrolled');
+  }
   asideRight.classList.remove('aside--scrolled');
 }
 
